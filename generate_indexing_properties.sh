@@ -1,5 +1,7 @@
 #!/bin/bash
 current_directory=`pwd`"/$lang_i18n"
+
+
 # Wikipedia Dump
 # --------------
 #org.dbpedia.spotlight.data.wikipediaDump = /usr/local/spotlight/dbpedia_data/original/wikipedia/enwiki-latest-pages-articles.xml.bz2

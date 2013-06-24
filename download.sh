@@ -6,8 +6,6 @@ export dbpedia_workspace=`pwd`"/$lang_i18n"
 export opennlpmodels="http://opennlp.sourceforge.net/models-1.5/"
 export dbpedia_version=3.8
 
-
-
 # error_exit function by William Shotts. http://stackoverflow.com/questions/64786/error-handling-in-bash
 function error_exit
 {

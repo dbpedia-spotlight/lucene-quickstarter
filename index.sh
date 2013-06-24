@@ -5,6 +5,7 @@
 # and the final output.
 #
 # @author maxjakob, pablomendes
+
 ./download.sh
 
 echo "Cloning DBpedia Spotlight..."
@@ -13,6 +14,7 @@ cd dbpedia-spotlight
 mvn install
 cd ..
 current_directory=`pwd`
+
 export DBPEDIA_WORKSPACE=$current_directory/$lang_i18n/dbpedia_data
 export INDEX_CONFIG_FILE=$current_directory/$lang_i18n/indexing.properties
 
