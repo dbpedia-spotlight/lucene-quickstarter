@@ -13,7 +13,7 @@ git clone https://github.com/dbpedia-spotlight/dbpedia-spotlight.git
 cd dbpedia-spotlight
 mvn install
 cd ..
-current_directory=`pwd`
+current_directory=`${PWD}/../`
 
 export DBPEDIA_WORKSPACE=$current_directory/$lang_i18n/dbpedia_data
 export INDEX_CONFIG_FILE=$current_directory/$lang_i18n/indexing.properties
