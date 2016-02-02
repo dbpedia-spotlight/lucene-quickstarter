@@ -1,0 +1,5 @@
+org/dbpedia/spotlight/model/EqualityTests.class
+org/dbpedia/spotlight/tagging/lingpipe/LingPipeTextUtilTest.class
+org/dbpedia/spotlight/spot/OpenNLPSpottersTest.class
+org/dbpedia/spotlight/tagging/lingpipe/LingPipeTaggedTokenProviderTest.class
+org/dbpedia/spotlight/spot/cooccurrence/features/data/OccurrenceDataProviderSQLTest.class

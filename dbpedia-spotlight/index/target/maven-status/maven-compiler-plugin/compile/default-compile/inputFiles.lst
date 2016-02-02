@@ -1,0 +1,13 @@
+/home/sandro/git/lucene-quickstarter/dbpedia-spotlight/index/src/main/java/org/dbpedia/spotlight/lucene/index/MergedOccurrencesContextIndexer.java
+/home/sandro/git/lucene-quickstarter/dbpedia-spotlight/index/src/main/java/org/dbpedia/spotlight/lucene/index/BaseIndexer.java
+/home/sandro/git/lucene-quickstarter/dbpedia-spotlight/index/src/main/java/org/dbpedia/spotlight/lucene/index/SeparateOccurrencesIndexer.java
+/home/sandro/git/lucene-quickstarter/dbpedia-spotlight/index/src/main/java/org/dbpedia/spotlight/spot/cooccurrence/training/AnnotatedDatasetEnricherNGram.java
+/home/sandro/git/lucene-quickstarter/dbpedia-spotlight/index/src/main/scala/org/dbpedia/spotlight/io/Teste.java
+/home/sandro/git/lucene-quickstarter/dbpedia-spotlight/index/src/main/java/org/dbpedia/spotlight/lucene/index/CandidateIndexer.java
+/home/sandro/git/lucene-quickstarter/dbpedia-spotlight/index/src/main/java/org/dbpedia/spotlight/spot/cooccurrence/training/AnnotatedDatasetEnricher.java
+/home/sandro/git/lucene-quickstarter/dbpedia-spotlight/index/src/main/java/org/dbpedia/spotlight/spot/cooccurrence/training/AnnotatedDataset.java
+/home/sandro/git/lucene-quickstarter/dbpedia-spotlight/index/src/main/java/org/dbpedia/spotlight/spot/cooccurrence/training/AnnotatedSurfaceFormOccurrence.java
+/home/sandro/git/lucene-quickstarter/dbpedia-spotlight/index/src/main/java/org/dbpedia/spotlight/lucene/index/OccurrenceContextIndexer.java
+/home/sandro/git/lucene-quickstarter/dbpedia-spotlight/index/src/main/java/org/dbpedia/spotlight/spot/cooccurrence/training/LCCImporterSQL.java
+/home/sandro/git/lucene-quickstarter/dbpedia-spotlight/index/src/main/java/org/dbpedia/spotlight/spot/cooccurrence/training/AnnotatedDatasetEnricherUnigram.java
+/home/sandro/git/lucene-quickstarter/dbpedia-spotlight/index/src/main/java/org/dbpedia/spotlight/lucene/index/IndexEnricher.java

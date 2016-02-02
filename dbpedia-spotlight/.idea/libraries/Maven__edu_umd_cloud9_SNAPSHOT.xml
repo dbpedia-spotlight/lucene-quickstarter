@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: edu.umd:cloud9:SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/edu/umd/cloud9/SNAPSHOT/cloud9-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/edu/umd/cloud9/SNAPSHOT/cloud9-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/edu/umd/cloud9/SNAPSHOT/cloud9-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

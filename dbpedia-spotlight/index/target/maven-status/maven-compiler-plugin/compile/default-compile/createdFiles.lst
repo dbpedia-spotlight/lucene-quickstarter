@@ -1,0 +1,16 @@
+org/dbpedia/spotlight/lucene/index/SeparateOccurrencesIndexer.class
+org/dbpedia/spotlight/spot/cooccurrence/training/AnnotatedSurfaceFormOccurrence.class
+org/dbpedia/spotlight/io/Teste.class
+org/dbpedia/spotlight/lucene/index/BaseIndexer.class
+org/dbpedia/spotlight/lucene/index/OccurrenceContextIndexer.class
+org/dbpedia/spotlight/spot/cooccurrence/training/AnnotatedDataset.class
+org/dbpedia/spotlight/spot/cooccurrence/training/LCCImporterSQL.class
+org/dbpedia/spotlight/spot/cooccurrence/training/AnnotatedDatasetEnricher.class
+org/dbpedia/spotlight/lucene/index/CandidateIndexer.class
+org/dbpedia/spotlight/spot/cooccurrence/training/AnnotatedDataset$Format.class
+org/dbpedia/spotlight/lucene/index/IndexEnricher.class
+org/dbpedia/spotlight/spot/cooccurrence/training/AnnotatedDatasetEnricherUnigram.class
+org/dbpedia/spotlight/spot/cooccurrence/training/AnnotatedDatasetEnricher$1.class
+org/dbpedia/spotlight/spot/cooccurrence/training/AnnotatedDataset$1.class
+org/dbpedia/spotlight/lucene/index/MergedOccurrencesContextIndexer.class
+org/dbpedia/spotlight/spot/cooccurrence/training/AnnotatedDatasetEnricherNGram.class

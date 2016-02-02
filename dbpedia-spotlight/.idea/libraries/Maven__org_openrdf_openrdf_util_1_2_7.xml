@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.openrdf:openrdf-util:1.2.7">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/openrdf/openrdf-util/1.2.7/openrdf-util-1.2.7.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/openrdf/openrdf-util/1.2.7/openrdf-util-1.2.7-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/openrdf/openrdf-util/1.2.7/openrdf-util-1.2.7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
