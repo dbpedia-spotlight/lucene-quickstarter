@@ -15,7 +15,6 @@ readonly ALL_FILES=(labels disambiguations redirects short_abstracts short-abstr
 function error_exit
 {
     echo -e "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
-    exit 1
 }
 
 # The function used to create all the directories needed
