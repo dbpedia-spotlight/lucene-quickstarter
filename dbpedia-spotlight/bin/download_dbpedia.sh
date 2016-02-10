@@ -5,8 +5,7 @@ readonly LANG_i18n=$2
 readonly DBPEDIA_DOWNLOADS="http://downloads.dbpedia.org"/$DBPEDIA_VERSION
 readonly DBPEDIA_ROOT=/mnt/dbpedia
 readonly DBPEDIA_DATA=$DBPEDIA_ROOT/dbpedia_data/$DBPEDIA_VERSION
-readonly DBPEDIA_INDEX=dbpedia-lookup-index/$LANG_i18n/$DBPEDIA_VERSION
-readonly ALL_FILES=(labels disambiguations redirects short_abstracts instance_types article_categories)
+readonly ALL_FILES=(labels disambiguations redirects short_abstracts short-abstracts instance_types instance-types article_categories article-categories)
 
 #+------------------------------------------------------------------------------------------------------------------------------+
 #| Functions                                                                                                                    |
@@ -62,7 +61,6 @@ function download_file()
 
 #-----------------------------------------------------------------------------------------------------------------------------+
 create_dir $DBPEDIA_DATA
-create_dir $DBPEDIA_ROOT/$DBPEDIA_INDEX
 
 for i in ${ALL_FILES[@]}
 do
