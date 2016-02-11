@@ -21,7 +21,7 @@ package org.dbpedia.spotlight.exceptions;
  * 
  * @author maxjakob
  */
-public class InputException extends AnnotationException {
+public class InputException extends Exception {
 
     public InputException(String msg, Exception e) {
         super(msg,e);

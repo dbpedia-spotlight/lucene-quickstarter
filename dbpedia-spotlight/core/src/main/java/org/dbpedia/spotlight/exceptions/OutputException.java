@@ -21,7 +21,7 @@ package org.dbpedia.spotlight.exceptions;
  * 
  * @author pablomendes
  */
-public class OutputException extends AnnotationException {
+public class OutputException extends Exception {
 
     public OutputException(String msg, Exception e) {
         super(msg,e);

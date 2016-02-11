@@ -22,7 +22,7 @@ package org.dbpedia.spotlight.exceptions;
  * 
  * @author pablomendes
  */
-public class SparqlExecutionException extends AnnotationException {
+public class SparqlExecutionException extends Exception {
 
     public SparqlExecutionException(String msg, Exception e) {
         super(msg,e);
