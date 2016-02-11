@@ -16,11 +16,11 @@ mkdir -p $SPOTLIGHT_OUTPUT_FILES
 cd $SPOTLIGHT_INDEX
 
 # first step is to extract valid URIs, synonyms and surface forms from DBpedia#
-#mvn scala:run -Dlauncher=ExtractCandidateMap "-DjavaOpts.Xmx=$JAVA_XMX" "-DaddArgs=${INDEX_CONFIG_FILE}"
+mvn scala:run -Dlauncher=ExtractCandidateMap "-DjavaOpts.Xmx=$JAVA_XMX" "-DaddArgs=${INDEX_CONFIG_FILE}"
 
 # now we collect parts of Wikipedia dump where DBpedia resources occur and output those occurrences as Tab-Separated-Values
 echo -e "Parsing Wikipedia dump to extract occurrences...\n"
-#mvn scala:run -Dlauncher=ExtractOccsFromWikipedia "-DjavaOpts.Xmx=$JAVA_XMX" "-DaddArgs=${INDEX_CONFIG_FILE}|${SPOTLIGHT_OUTPUT_FILES}occs.tsv"
+mvn scala:run -Dlauncher=ExtractOccsFromWikipedia "-DjavaOpts.Xmx=$JAVA_XMX" "-DaddArgs=${INDEX_CONFIG_FILE}|${SPOTLIGHT_OUTPUT_FILES}occs.tsv"
 
 # (recommended) sorting the occurrences by URI will speed up context merging during indexing
 echo -e "Sorting occurrences to speed up indexing...\n"
