@@ -56,6 +56,8 @@ public class IndexEnricher extends BaseIndexer<Object> {
 
     Analyzer mAnalyzer;
 
+    String namespace;
+
     /**
      * See {@link BaseIndexer}
      * @param sourceIndexManager
@@ -65,6 +67,7 @@ public class IndexEnricher extends BaseIndexer<Object> {
         super(targetIndexManager, true); //ATTENTION: if this is set to true, it will override the existing index!
         searcher = new MergedOccurrencesContextSearcher(sourceIndexManager);
         mAnalyzer = config.getAnalyzer();
+        namespace = config.get("org.dbpedia.spotlight.default_namespace", "");
         LOG.info("Analyzer class: "+mAnalyzer.getClass());
     }
 
@@ -209,7 +212,7 @@ public class IndexEnricher extends BaseIndexer<Object> {
                 Document doc = searcher.getFullDocument(i);
                 String uri = doc.getField(LuceneManager.DBpediaResourceField.URI.toString()).stringValue();
 
-                LinkedHashSet<OntologyType> types = typesMap.get(uri);
+                LinkedHashSet<OntologyType> types = typesMap.get(namespace.concat(uri));
                 if (types != null) {
                     for (OntologyType t : types) {
                         int numberOfAdds = 1;
