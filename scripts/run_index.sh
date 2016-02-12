@@ -35,10 +35,6 @@ grep -Pv "      [123] " ${SPOTLIGHT_OUTPUT_FILES}surfaceForms-fromOccs.count | s
 cp ${SPOTLIGHT_OUTPUT_FILES}surfaceForms.tsv ${SPOTLIGHT_OUTPUT_FILES}surfaceForms-fromTitRedDis.tsv
 cat ${SPOTLIGHT_OUTPUT_FILES}surfaceForms-fromTitRedDis.tsv ${SPOTLIGHT_OUTPUT_FILES}surfaceForms-fromOccs.tsv > ${SPOTLIGHT_OUTPUT_FILES}surfaceForms.tsv
 
-
-# now that we have our set of surfaceForms, we can build a simple dictionary-based spotter from them
-mvn scala:run -Dlauncher=IndexLingPipeSpotter "-DjavaOpts.Xmx=$JAVA_XMX" "-DaddArgs=${INDEX_CONFIG_FILE}"
-
 set -e
 # create a lucene index out of the occurrences
 echo -e "Creating a context index from occs.tsv...\n"
@@ -48,6 +44,7 @@ mvn scala:run -Dlauncher=IndexMergedOccurrences "-DjavaOpts.Xmx=$JAVA_XMX" "-Dad
 echo -e "Adding Surface Forms to index...\n"
 mvn scala:run -Dlauncher=AddSurfaceFormsToIndex "-DjavaOpts.Xmx=$JAVA_XMX" "-DaddArgs=${INDEX_CONFIG_FILE}|${SPOTLIGHT_OUTPUT_FILES}/index"
 
-
 # add entity types to index
 mvn scala:run -Dlauncher=AddTypesToIndex "-DjavaOpts.Xmx=$JAVA_XMX" "-DaddArgs=${INDEX_CONFIG_FILE}|${SPOTLIGHT_OUTPUT_FILES}/index-withSF"
+
+mvn scala:run -Dlauncher=IndexLingPipeSpotter "-DjavaOpts.Xmx=$JAVA_XMX" "-DaddArgs=${INDEX_CONFIG_FILE}|false|index"
