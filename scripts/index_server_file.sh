@@ -16,7 +16,7 @@ echo "# Defines the languages the system should support." >> ../i18n/${LANG_i18n
 echo "org.dbpedia.spotlight.language=${LANG_DESC}" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
 echo "org.dbpedia.spotlight.language_i18n_code=${LANG_i18n}" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
 echo "# Stop word list" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
-echo "org.dbpedia.spotlight.data.stopWords.${LANG_i18n}=${ROOT_DIRECTORY}/lucene-quickstarter/i18n/${LANG_i18n}" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
+echo "org.dbpedia.spotlight.data.stopWords.${LANG_i18n}=${ROOT_DIRECTORY}/lucene-quickstarter/i18n/${LANG_i18n}/stopwords.list" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
 echo "" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
 echo "#----- SPOTTING -------" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
 echo "org.dbpedia.spotlight.spot.spotters=LingPipeSpotter" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
@@ -27,7 +27,7 @@ echo "org.dbpedia.spotlight.spot.allowOverlap=false" >> ../i18n/${LANG_i18n}/ser
 echo "org.dbpedia.spotlight.spot.caseSensitive=false" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
 echo "" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
 echo "# Path to serialized HMM model for LingPipe-based POS tagging. Required by AtLeastOneNounSelector and CoOccurrenceBasedSelector" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
-echo "org.dbpedia.spotlight.tagging.hmm=${ROOT_DIRECTORY}/conf/pos-en-general-brown.HiddenMarkovModel" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
+echo "org.dbpedia.spotlight.tagging.hmm=${ROOT_DIRECTORY}/lucene-quickstarter/conf/pos-en-general-brown.HiddenMarkovModel" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
 echo "" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
 echo "#----- DISAMBIGUATION -------" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
 echo "# List of disambiguators to load: Document,Occurrences,CuttingEdge,Default" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
