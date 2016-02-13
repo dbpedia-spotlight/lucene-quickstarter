@@ -54,7 +54,7 @@ Hey, Don't be sad!  In a few days we will have done for the new releases.
 
 ## About
 
-This repo is an original work from  Pablo Mender (@pablomendes), Max Jakob (@maxjakob) Joachim Daiber (@jodaiber) and DBpedia Spotlight community. I'm just trying to turn index building with Lucene more easy.
+This repo is an original work from  Pablo Mender ([@pablomendes](https://github.com/pablomendes)), Max Jakob ([@maxjakob](https://github.com/maxjakob)) Joachim Daiber ([@jodaiber](https://github.com/jodaiber)) and DBpedia Spotlight community. I'm just trying to turn index building with Lucene more easy.
 
 
 
