@@ -7,12 +7,10 @@ The repo is ready to use for the follow languages: arabic  czech, german , greek
 
 ### Why my language is not supported yet?
 ===================
-
 We are working on i18n support and you can help us on it. You just need update or create the stop words list and a black listed URI pattern (a small regex for disambiguation pages) for your target language. You can follow a lot of examples at /i18n folder.
 
 ### Requirements
 ===================
-
 To create a new  index you will require
 
 * Linux;
@@ -23,7 +21,6 @@ To create a new  index you will require
 
 ### How to run
 ===================
-
  * Clone this repo locally;
  * Download the latest dump of Wikipedia. You can use the command line
  
@@ -49,8 +46,9 @@ If you are here, seems that you have a new index ready for use. If not, tell us 
 
 Supported Extraction Framework versions
 ===================
+All the scripts supports Extraction Framework 3.9. We found that new versions have a new folder structure (with slightly modification). 
 
-All the scripts supports Extraction Framework 3.9. We found that new versions have a new folder structure (with slightly modification). Don't be sad. In a few days we will have done for the new releases.  
+Hey, Don't be sad!  In a few days we will have done for the new releases.  
   
 
 
