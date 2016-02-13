@@ -7,15 +7,15 @@ echo ${LANGUAGE} ${VERSION}
 
 readonly JAVA_XMX=16G
 readonly ROOT_DIR=/mnt/dbpedia/
-readonly SPOTLIGHT_ROOT=${ROOT_DIR}lucene-quickstarter/dbpedia-spotlight
+#readonly SPOTLIGHT_ROOT=${ROOT_DIR}lucene-quickstarter/dbpedia-spotlight
 readonly SPOTLIGHT_INDEX=${ROOT_DIR}lucene-quickstarter/dbpedia-spotlight/index
 readonly SPOTLIGHT_OUTPUT_FILES=${ROOT_DIR}spotlight/${LANGUAGE}/
 readonly INDEX_CONFIG_FILE=${ROOT_DIR}lucene-quickstarter/i18n/${LANGUAGE}/indexing_${VERSION}.properties
 
 mkdir -p $SPOTLIGHT_OUTPUT_FILES
 
-cd $SPOTLIGHT_ROOT
-mvn clean install
+#cd $SPOTLIGHT_ROOT
+#mvn clean install
 
 cd $SPOTLIGHT_INDEX
 

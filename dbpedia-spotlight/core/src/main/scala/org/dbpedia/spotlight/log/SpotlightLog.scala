@@ -34,60 +34,60 @@ object SpotlightLog {
       val log = loggers.getOrElseUpdate(c, LogFactory.getLog(c))
 
       if (log.isDebugEnabled) {
-        if(args.size == 0)
-          log.debug(msg)
-        else
-          log.debug(msg.format(args: _*))
+        //if(args.size == 0)
+        //  log.debug(msg)
+        //else
+         // log.debug(msg.format(args: _*))
       }
     }
     def _info(c:Class[_], msg: String, args: Any*) = {
       val log = loggers.getOrElseUpdate(c, LogFactory.getLog(c))
 
       if(log.isInfoEnabled) {
-        if(args.size == 0)
-          log.info(msg)
-        else
-          log.info(msg.format(args: _*))
+       // if(args.size == 0)
+       //   log.info(msg)
+       // else
+       //   log.info(msg.format(args: _*))
       }
     }
     def _error(c:Class[_], msg: String, args: Any*) = {
       val log = loggers.getOrElseUpdate(c, LogFactory.getLog(c))
 
       if(log.isErrorEnabled) {
-        if(args.size == 0)
-          log.error(msg)
-        else
-          log.error(msg.format(args: _*))
+       // if(args.size == 0)
+       //   log.error(msg)
+       // else
+       //   log.error(msg.format(args: _*))
       }
     }
     def _fatal(c:Class[_], msg: String, args: Any*) = {
       val log = loggers.getOrElseUpdate(c, LogFactory.getLog(c))
 
       if(log.isFatalEnabled) {
-        if(args.size == 0)
-          log.fatal(msg)
-        else
-          log.fatal(msg.format(args: _*))
+       // if(args.size == 0)
+      //    log.fatal(msg)
+      //  else
+       //   log.fatal(msg.format(args: _*))
       }
     }
     def _trace(c:Class[_], msg: String, args: Any*) = {
       val log = loggers.getOrElseUpdate(c, LogFactory.getLog(c))
 
       if(log.isTraceEnabled) {
-        if(args.size == 0)
-          log.trace(msg)
-        else
-          log.trace(msg.format(args: _*))
+       // if(args.size == 0)
+        //  log.trace(msg)
+       // else
+       //   log.trace(msg.format(args: _*))
       }
     }
     def _warn(c:Class[_], msg: String, args: Any*) = {
       val log = loggers.getOrElseUpdate(c, LogFactory.getLog(c))
 
       if(log.isWarnEnabled) {
-        if(args.size == 0)
-          log.warn(msg)
-        else
-          log.warn(msg.format(args: _*))
+       // if(args.size == 0)
+       //   log.warn(msg)
+       // else
+       //   log.warn(msg.format(args: _*))
       }
     }
   }
