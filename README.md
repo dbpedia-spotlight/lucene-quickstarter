@@ -21,7 +21,8 @@ To create a new  index you will require
 
 ## How to run
 
- * Clone this repo locally;
+ * Create or mount a new folder in /mnt called dbpedia. It is our workspace
+ * Clone this repo locally inside /mnt/dbpedia;
  * Download the latest dump of Wikipedia. You can use the command line
  
   `./lucene-quickstarter/scripts/download_wikipedia.sh LANGUAGE_CODE`
