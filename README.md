@@ -52,6 +52,10 @@ All the scripts supports Extraction Framework 3.9. We found that new versions ha
 Hey, Don't be sad!  In a few days we will have done for the new releases.  
   
 
+## About
+
+This repo is an original work from  Pablo Mender (@pablomendes), Max Jakob (@maxjakob) Joachim Daiber (@jodaiber) and DBpedia Spotlight community. I'm just trying to turn index building with Lucene more easy.
+
 
 
 
