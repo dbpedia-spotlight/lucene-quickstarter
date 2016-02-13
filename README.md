@@ -44,7 +44,7 @@ To create a new  index you will require
 
 If you are here, seems that you have a new index ready for use. If not, tell us opening an issue.
 
-Supported Extraction Framework versions
+## Supported Extraction Framework versions
 
 All the scripts supports Extraction Framework 3.9. We found that new versions have a new folder structure (with slightly modification). 
 
