@@ -5,11 +5,11 @@ You can use this repository for creating lucene backend index of DBpedia Spotlig
 
 The repo is ready to use for the follow languages: arabic  czech, german , greek , english, spanish, french , italian, korean , dutch, polish, portuguese, hungarian and russian.
 
-### Why my language is not supported yet?
+## Why my language is not supported yet?
 
 We are working on i18n support and you can help us on it. You just need update or create the stop words list and a black listed URI pattern (a small regex for disambiguation pages) for your target language. You can follow a lot of examples at /i18n folder.
 
-### Requirements
+## Requirements
 
 To create a new  index you will require
 
@@ -19,7 +19,7 @@ To create a new  index you will require
 * Java 1.7;
  
 
-### How to run
+## How to run
 
  * Clone this repo locally;
  * Download the latest dump of Wikipedia. You can use the command line
