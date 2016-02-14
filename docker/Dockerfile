@@ -5,7 +5,8 @@ MAINTAINER  Sandro Athaide Coelho <sandroacoelho@gmail.com
 RUN apt-get update && apt-get install -y \
     curl \
     maven \
-    git
+    git \
+    bzip2
 
 RUN mkdir -p /mnt/dbpedia && \
     cd /mnt/dbpedia && \
