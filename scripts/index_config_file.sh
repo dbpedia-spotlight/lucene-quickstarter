@@ -30,7 +30,7 @@ echo "">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "# Language-specific config">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "# --------------">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "org.dbpedia.spotlight.language=${LANG_DESC}">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
-echo "org.dbpedia.spotlight.language_i18n_code=cs">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
+echo "org.dbpedia.spotlight.language_i18n_code=${LANG_i18n}">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "org.dbpedia.spotlight.lucene.analyzer=${LUCENE_CLASS}">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "org.dbpedia.spotlight.lucene.version=LUCENE_36">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
