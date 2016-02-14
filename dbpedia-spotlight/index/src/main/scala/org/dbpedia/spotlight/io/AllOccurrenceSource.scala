@@ -78,46 +78,48 @@ object AllOccurrenceSource
 
             for (wikiPage <- wikiPages)
             {
-                var pageNode = wikiParser( wikiPage )
+                val optionPageNode = wikiParser( wikiPage )
+                var pageNode = optionPageNode.get
 
                 // disambiguations
-                if (pageNode.isDisambiguation) {
+                if (pageNode != None && pageNode.isDisambiguation) {
                     // clean the wiki markup from everything but links
                     val cleanSource = WikiMarkupStripper.stripEverythingButBulletPoints(wikiPage.source)
 
                     // parse the (clean) wiki page
-                    pageNode = wikiParser( WikiPageUtil.copyWikiPage(wikiPage, cleanSource) )
+                    pageNode = wikiParser( WikiPageUtil.copyWikiPage(wikiPage, cleanSource) ).get
 
-                    val surfaceForm = new SurfaceForm(
-                            wikiPage.title.decoded.replace(" (disambiguation)", "").replaceAll("""^(The|A) """, ""))   //TODO i18n
+                    if (pageNode != None ) {
+                        val surfaceForm = new SurfaceForm(
+                            wikiPage.title.decoded.replace(" (disambiguation)", "").replaceAll("""^(The|A) """, "")) //TODO i18n
 
 
-                    // split the page node into list items
-                    val listItems = NodeUtil.splitNodes(pageNode.children, splitDisambiguationsRegex)
-                    var itemsCount = 0
-                    for (listItem <- listItems)
-                    {
-                        itemsCount += 1
-                        val id = pageNode.title.encoded+"-pl"+itemsCount
-                        DisambiguationContextSource.getOccurrence(listItem, surfaceForm, id) match {
-                            case Some(occ) => {
-                                (1 to multiplyDisambigs).foreach{i => f( occ )}
-                                occCount += 1
+                        // split the page node into list items
+                        val listItems = NodeUtil.splitNodes(pageNode.children, splitDisambiguationsRegex)
+                        var itemsCount = 0
+                        for (listItem <- listItems) {
+                            itemsCount += 1
+                            val id = pageNode.title.encoded + "-pl" + itemsCount
+                            DisambiguationContextSource.getOccurrence(listItem, surfaceForm, id) match {
+                                case Some(occ) => {
+                                    (1 to multiplyDisambigs).foreach { i => f(occ) }
+                                    occCount += 1
+                                }
+                                case None =>
                             }
-                            case None =>
                         }
                     }
                 }
 
                 // definitions and occurrences
-                else if (!pageNode.isRedirect) {   // and not a disambiguation
+                else if (pageNode != None && !pageNode.isRedirect) {   // and not a disambiguation
                     // Occurrences
 
                     // clean the wiki markup from everything but links
                     val cleanSource = WikiMarkupStripper.stripEverything(wikiPage.source)
 
                     // parse the (clean) wiki page
-                    pageNode = wikiParser( WikiPageUtil.copyWikiPage(wikiPage, cleanSource) )
+                    pageNode = wikiParser( WikiPageUtil.copyWikiPage(wikiPage, cleanSource) ).get
     
                     // split the page node into paragraphs
                     val paragraphs = NodeUtil.splitNodes(pageNode.children, splitParagraphsRegex)

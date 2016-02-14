@@ -68,10 +68,10 @@ object WikiPageContextSource
                 val cleanSource = WikiMarkupStripper.stripEverything(wikiPage.source)
 
                 // parse the (clean) wiki page
-                val pageNode = wikiParser( WikiPageUtil.copyWikiPage(wikiPage, cleanSource) )
+                val pageNode = wikiParser( WikiPageUtil.copyWikiPage(wikiPage, cleanSource) ).get
 
                 // exclude redirects, disambiguation pages and other undesired pages (e.g. Lists)
-                if (!pageNode.isRedirect && !pageNode.isDisambiguation)
+                if (pageNode != None && !pageNode.isRedirect && !pageNode.isDisambiguation)
                 {
                     val pageContext = new Text( getPageText(pageNode) )
                     val resource = new DBpediaResource(pageNode.title.encoded)
