@@ -10,7 +10,11 @@ echo "# Server hostname and port to be used by DBpedia Spotlight REST API> " > .
 echo "org.dbpedia.spotlight.web.rest.uri=http://localhost:2222/rest" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
 echo "" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
 echo "# Internationalization (i18n) support" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
-echo "org.dbpedia.spotlight.default_namespace=http://${LANG_i18n}.dbpedia.org/resource/" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
+if [ "${LANG_i18n}" == "en" ]; then
+	echo "org.dbpedia.spotlight.default_namespace=http://dbpedia.org/resource/" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
+else
+	echo "org.dbpedia.spotlight.default_namespace=http://${LANG_i18n}.dbpedia.org/resource/" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
+fi
 echo "org.dbpedia.spotlight.default_ontology= http://dbpedia.org/ontology/" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
 echo "# Defines the languages the system should support." >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
 echo "org.dbpedia.spotlight.language=${LANG_DESC}" >> ../i18n/${LANG_i18n}/server_${DBPEDIA_VERSION}.properties
