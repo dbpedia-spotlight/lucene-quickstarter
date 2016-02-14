@@ -47,10 +47,8 @@ If you are here, seems that you have a new index ready for use. If not, tell us 
 
 ## Supported Extraction Framework versions
 
-All the scripts supports Extraction Framework 3.9. We found that new versions have a new folder structure (with slightly modification). 
+3.9, 4.0 and 4.1
 
-Hey, Don't be sad!  In a few days we will have done for the new releases.  
-  
 
 ## About
 
