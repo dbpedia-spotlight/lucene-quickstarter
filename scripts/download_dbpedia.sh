@@ -2,14 +2,23 @@
 
 readonly DBPEDIA_VERSION=$1
 readonly LANG_i18n=$2
-readonly DBPEDIA_DOWNLOADS="http://downloads.dbpedia.org"/$DBPEDIA_VERSION
 readonly DBPEDIA_ROOT=/mnt/dbpedia
 readonly DBPEDIA_DATA=$DBPEDIA_ROOT/dbpedia_data/$DBPEDIA_VERSION
-readonly ALL_FILES=(labels disambiguations redirects short_abstracts short-abstracts instance_types instance-types article_categories article-categories)
+
+# DBpedia versions with i18n support (before 2015) 
+readonly SUPPORTED_VERSIONS_BEFORE_2015="3.0, 3.1, 3.2, 3.3, 3.4, 3.5, 3.5.1, 3.6, 3.7, 3.8, 3.9, 2014"
+readonly DBPEDIA_DOWNLOADS="http://downloads.dbpedia.org"/$DBPEDIA_VERSION
+readonly ALL_FILES=(labels disambiguations redirects short_abstracts instance_types article_categories)
+
+# DBpedia with i18n (after 2015) 
+readonly SUPPORTED_VERSIONS_AFTER_2015="2015-04, 2015-10, current"
+readonly DBPEDIA_DOWNLOADS_2015="http://downloads.dbpedia.org"/$DBPEDIA_VERSION/core-i18n/
+readonly ALL_FILES_2015=(labels disambiguations redirects short-abstracts instance-types article-categories)
 
 #+------------------------------------------------------------------------------------------------------------------------------+
 #| Functions                                                                                                                    |
 #+------------------------------------------------------------------------------------------------------------------------------+
+
 
 # Error_exit function by William Shotts. http://stackoverflow.com/questions/64786/error-handling-in-bash
 function error_exit
@@ -58,15 +67,42 @@ function download_file()
     echo -e "done!\n"
 }
 
+
+
+function unpackAll()
+{
+	for i in ${ALL_FILES[@]}
+	do
+	  bunzip2 -fk $DBPEDIA_DATA/$LANG_i18n/${i}_$LANG_i18n.nt.bz2 >  $DBPEDIA_DATA/$LANG_i18n/${i}_$LANG_i18n.nt
+	done	
+	
+}
+
 #-----------------------------------------------------------------------------------------------------------------------------+
 create_dir $DBPEDIA_DATA
 
-for i in ${ALL_FILES[@]}
-do
- download_file $DBPEDIA_DOWNLOADS/$LANG_i18n ${i}_$LANG_i18n.nt.bz2 $DBPEDIA_DATA/$LANG_i18n    
-done
+if [[ $SUPPORTED_VERSIONS_BEFORE_2015 == *"$DBPEDIA_VERSION"* ]]; then
+	echo "DBpedia version before 2015" ...
+	
+	for i in ${ALL_FILES[@]}
+	do
+	 download_file $DBPEDIA_DOWNLOADS/$LANG_i18n ${i}_$LANG_i18n.nt.bz2 $DBPEDIA_DATA/$LANG_i18n    
+	done
+	
+	unpackAll
+fi
 
-for i in ${ALL_FILES[@]}
-do
-  bunzip2 -fk $DBPEDIA_DATA/$LANG_i18n/${i}_$LANG_i18n.nt.bz2 >  $DBPEDIA_DATA/$LANG_i18n/${i}_$LANG_i18n.nt
-done
+
+if [[ $SUPPORTED_VERSIONS_AFTER_2015 == *"$DBPEDIA_VERSION"* ]]; then
+    echo "DBpedia version after 2015" ...
+	
+	#for i in ${ALL_FILES_2015[@]}
+	#do
+	# download_file $DBPEDIA_DOWNLOADS_2015/$LANG_i18n ${i}_$LANG_i18n.nt.bz2 $DBPEDIA_DATA/$LANG_i18n    
+	# mv $DBPEDIA_DATA/$LANG_i18n/${i}_$LANG_i18n.nt.bz2  $DBPEDIA_DATA/$LANG_i18n/${i/-/_}_$LANG_i18n.nt.bz2  
+	#done
+	
+    unpackAll
+fi
+
+
