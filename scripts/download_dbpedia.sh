@@ -96,11 +96,11 @@ fi
 if [[ $SUPPORTED_VERSIONS_AFTER_2015 == *"$DBPEDIA_VERSION"* ]]; then
     echo "DBpedia version after 2015" ...
 	
-	#for i in ${ALL_FILES_2015[@]}
-	#do
-	# download_file $DBPEDIA_DOWNLOADS_2015/$LANG_i18n ${i}_$LANG_i18n.nt.bz2 $DBPEDIA_DATA/$LANG_i18n    
-	# mv $DBPEDIA_DATA/$LANG_i18n/${i}_$LANG_i18n.nt.bz2  $DBPEDIA_DATA/$LANG_i18n/${i/-/_}_$LANG_i18n.nt.bz2  
-	#done
+	for i in ${ALL_FILES_2015[@]}
+	do
+	 download_file $DBPEDIA_DOWNLOADS_2015/$LANG_i18n ${i}_$LANG_i18n.nt.bz2 $DBPEDIA_DATA/$LANG_i18n    
+	 mv $DBPEDIA_DATA/$LANG_i18n/${i}_$LANG_i18n.nt.bz2  $DBPEDIA_DATA/$LANG_i18n/${i/-/_}_$LANG_i18n.nt.bz2  
+	done
 	
     unpackAll
 fi
