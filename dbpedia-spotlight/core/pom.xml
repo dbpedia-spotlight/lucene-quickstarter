@@ -201,11 +201,6 @@
         </dependency>
 
         <dependency>
-            <groupId>jdbm</groupId>
-            <artifactId>jdbm</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>trove</groupId>
             <artifactId>trove</artifactId>
         </dependency>
