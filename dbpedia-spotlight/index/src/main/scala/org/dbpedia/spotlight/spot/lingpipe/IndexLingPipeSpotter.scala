@@ -72,7 +72,7 @@ object IndexLingPipeSpotter
     //TODO enable filtering by count
     private def getDictionaryFromNTSurrogates(surrogatesNTFile : File) : MapDictionary[String] = {
         val dictionary = new MapDictionary[String]()
-        val nxParser = new NxParser(new FileInputStream(surrogatesNTFile), false)
+        val nxParser = new NxParser().parse(new FileInputStream(surrogatesNTFile))
         while (nxParser.hasNext) { //TODO this needs more work. should filter by property name
             val triple = nxParser.next
             val surfaceForm = triple(2).toString

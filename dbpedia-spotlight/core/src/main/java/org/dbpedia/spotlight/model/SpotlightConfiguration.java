@@ -23,7 +23,6 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.search.BooleanQuery;
 import org.dbpedia.spotlight.exceptions.ConfigurationException;
-import org.dbpedia.spotlight.sparql.SparqlQueryExecuter;
 
 import java.io.*;
 import java.net.URI;
