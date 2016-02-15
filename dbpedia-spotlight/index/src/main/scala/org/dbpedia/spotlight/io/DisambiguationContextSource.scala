@@ -92,7 +92,7 @@ object DisambiguationContextSource
                 // parse the (clean) wiki page
                 val pageNode = wikiParser( WikiPageUtil.copyWikiPage(wikiPage, cleanSource) ).get
 
-                if (pageNode != None && pageNode.isDisambiguation) {
+                if (!None.canEqual(pageNode) && pageNode.isDisambiguation) {
                     val surfaceForm = new SurfaceForm(wikiPage.title.decoded.replace(" (disambiguation)", "")) //TODO language-specific
 
                     // split the page node into list items

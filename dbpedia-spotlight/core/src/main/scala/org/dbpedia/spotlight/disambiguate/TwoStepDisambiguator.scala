@@ -134,7 +134,7 @@ class TwoStepDisambiguator(val candidateSearcher: CandidateSearcher,
         } catch {
             case e: Exception => throw new SearchException(e)
             case r: RuntimeException => throw new SearchException(r)
-            case _ => SpotlightLog.error(this.getClass, "Unknown really scary error happened. You can cry now.")
+            case _ : Throwable => SpotlightLog.error(this.getClass, "Unknown really scary error happened. You can cry now.")
         }
         // SpotlightLog.debug(this.getClass, "Hits (%d): %s", hits.size, hits.map( sd => "%s=%s".format(sd.doc,sd.score) ).mkString(","))
 

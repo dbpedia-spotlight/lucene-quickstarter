@@ -82,14 +82,14 @@ object AllOccurrenceSource
                 var pageNode = optionPageNode.get
 
                 // disambiguations
-                if (pageNode != None && pageNode.isDisambiguation) {
+                if (!None.canEqual(pageNode) && pageNode.isDisambiguation) {
                     // clean the wiki markup from everything but links
                     val cleanSource = WikiMarkupStripper.stripEverythingButBulletPoints(wikiPage.source)
 
                     // parse the (clean) wiki page
                     pageNode = wikiParser( WikiPageUtil.copyWikiPage(wikiPage, cleanSource) ).get
 
-                    if (pageNode != None ) {
+                    if (!None.canEqual(pageNode) ) {
                         val surfaceForm = new SurfaceForm(
                             wikiPage.title.decoded.replace(" (disambiguation)", "").replaceAll("""^(The|A) """, "")) //TODO i18n
 
@@ -112,7 +112,7 @@ object AllOccurrenceSource
                 }
 
                 // definitions and occurrences
-                else if (pageNode != None && !pageNode.isRedirect) {   // and not a disambiguation
+                else if (!None.canEqual(pageNode) && !pageNode.isRedirect) {   // and not a disambiguation
                     // Occurrences
 
                     // clean the wiki markup from everything but links

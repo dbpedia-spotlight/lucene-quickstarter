@@ -101,7 +101,7 @@ object WikiOccurrenceSource
                 val pageNode = wikiParser( WikiPageUtil.copyWikiPage(wikiPage, cleanSource) ).get
 
                 // exclude redirect and disambiguation pages
-                if (pageNode != None && !pageNode.isRedirect && !pageNode.isDisambiguation) {
+                if (!None.canEqual(pageNode) && !pageNode.isRedirect && !pageNode.isDisambiguation) {
 
                     // split the page node into paragraphs
                     val paragraphs = NodeUtil.splitNodes(pageNode.children, splitDocumentRegex)
