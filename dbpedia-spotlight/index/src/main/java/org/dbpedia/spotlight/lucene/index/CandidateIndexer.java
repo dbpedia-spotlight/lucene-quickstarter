@@ -102,7 +102,8 @@ public class CandidateIndexer extends BaseIndexer<Candidate> {
     public void addFromNTfile(File surfaceFormsDataSet) throws IOException, IndexException {
         LOG.info("Indexing candidate map from "+surfaceFormsDataSet.getName()+" to "+mLucene.directory()+"...");
 
-        NxParser nxParser = new NxParser(new FileInputStream(surfaceFormsDataSet), false);
+        NxParser nxParser = new NxParser();
+        nxParser.parse(new FileInputStream(surfaceFormsDataSet));
         while (nxParser.hasNext()) {
             Node[] nodes = nxParser.next();
             String resourceString = nodes[0].toString().replace(SpotlightConfiguration.DEFAULT_NAMESPACE,"");

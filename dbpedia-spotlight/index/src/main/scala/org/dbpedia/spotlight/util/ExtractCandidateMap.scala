@@ -19,17 +19,20 @@
 package org.dbpedia.spotlight.util
 
 
+import java.util
+
 import io.Source
 import org.dbpedia.spotlight.log.SpotlightLog
 import java.io._
 import org.dbpedia.spotlight.model.{Factory, SpotlightConfiguration, SurfaceForm}
 import java.util.Scanner
 import org.semanticweb.yars.nx.parser.NxParser
-import org.semanticweb.yars.nx.{Literal, Resource, Triple}
+import org.semanticweb.yars.nx.{BNode, Node, Literal, Resource}
 import collection.JavaConversions._
-import util.matching.Regex
 import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream
 import org.dbpedia.extraction.util.WikiUtil
+
+import scala.util.matching.Regex
 
 /**
  * Functions to create Concept URIs (possible mainResources of disambiguations)
@@ -75,7 +78,9 @@ object ExtractCandidateMap
         // redirects and disambiguations are bad URIs
         for (fileName <- List(redirectsFileName, disambiguationsFileName)) {
             val input = new BZip2CompressorInputStream(new FileInputStream(fileName),true)
-            for(triple <- new NxParser(input)) {
+            var triples = new NxParser().parse(input)
+            while (triples.hasNext) {
+                val triple = triples.next()
                 val badUri = triple(0).toString.replace(SpotlightConfiguration.DEFAULT_NAMESPACE, "")
                 badURIs += badUri
                 badURIStream.println(badUri)
@@ -87,7 +92,7 @@ object ExtractCandidateMap
         SpotlightLog.info(this.getClass, "  collecting concept URIs from titles in %s, without redirects and disambiguations...", titlesFileName)
         val titlesInputStream = new BZip2CompressorInputStream(new FileInputStream(titlesFileName), true)
         // get titles without bad URIs
-        val parser = new NxParser(titlesInputStream)
+        val parser = new NxParser().parse(titlesInputStream)
         while (parser.hasNext) {
             val triple = parser.next
             val uri = triple(0).toString.replace(SpotlightConfiguration.DEFAULT_NAMESPACE, "")
@@ -135,7 +140,7 @@ object ExtractCandidateMap
         var linkMap = Map[String,String]()
         val redirectsInput = new BZip2CompressorInputStream(new FileInputStream(redirectsFileName), true)
 
-        val parser = new NxParser(redirectsInput)
+        val parser = new NxParser().parse(redirectsInput)
         while (parser.hasNext) {
             val triple = parser.next
             val subj = triple(0).toString.replace(SpotlightConfiguration.DEFAULT_NAMESPACE, "")
@@ -220,7 +225,7 @@ object ExtractCandidateMap
         SpotlightLog.info(this.getClass, "  storing titles of redirect and disambiguation URIs...")
         for (fileName <- List(redirectsFileName, disambiguationsFileName)) {
             val input = new BZip2CompressorInputStream(new FileInputStream(fileName), true)
-            val parser = new NxParser(input)
+            val parser = new NxParser().parse(input)
             while (parser.hasNext) {
                 val triple = parser.next
                 val surfaceFormUri = triple(0).toString.replace(SpotlightConfiguration.DEFAULT_NAMESPACE, "")
@@ -270,7 +275,7 @@ object ExtractCandidateMap
         var linkMap = Map[String,List[String]]()
         for (fileName <- List(redirectsFileName, disambiguationsFileName)) {
             val input = new BZip2CompressorInputStream(new FileInputStream(fileName), true)
-            val parser = new NxParser(input)
+            val parser = new NxParser().parse(input)
             while (parser.hasNext) {
                 val triple = parser.next
                 val subj = triple(0).toString.replace(SpotlightConfiguration.DEFAULT_NAMESPACE, "")
@@ -349,13 +354,22 @@ object ExtractCandidateMap
         for (line <- Source.fromFile(surfaceFormsFileName, "UTF-8").getLines) {
             val elements = line.split("\t")
             val subj = new Resource(SpotlightConfiguration.DEFAULT_NAMESPACE+elements(1))
-            val obj = new Literal(elements(0), "lang=" + SpotlightConfiguration.DEFAULT_LANGUAGE_I18N_CODE, Literal.STRING)
-            val triple = new Triple(subj, predicate, obj)
-            ntStream.println(triple.toN3)
+            val obj = new Literal(elements(0), "lang=" + SpotlightConfiguration.DEFAULT_LANGUAGE_I18N_CODE)
+
+            val triple =  new Array[Node](3)
+            triple(0) = subj
+            triple(1) = predicate
+            triple(2) = obj
+
+
+            ntStream.println(triple.mkString(" "))
         }
         ntStream.close
         SpotlightLog.info(this.getClass, "Done.")
     }
+
+
+
 
     def exportSurfaceFormsTsvToLexvoNt(ntFile : File) {
         if (!new File(surfaceFormsFileName).isFile) {
@@ -373,8 +387,15 @@ object ExtractCandidateMap
             val elements = line.split("\t")
             val subj = new Resource(SpotlightConfiguration.DEFAULT_NAMESPACE+elements(1))
             val obj = new Resource("http://lexvo.org/id/term/"+langString+"/"+WikiUtil.wikiEncode(elements(0)))
-            val triple = new Triple(subj, predicate, obj)
-            ntStream.println(triple.toN3)
+
+            val triple =  new Array[Node](3)
+            triple(0) = subj
+            triple(1) = predicate
+            triple(2) = obj
+
+            ntStream.println(triple.mkString(" "))
+
+          //  ntStream.println(util.Arrays.toString(triple))
         }
         ntStream.close
         SpotlightLog.info(this.getClass, "Done.")

@@ -82,7 +82,7 @@ object TypesLoader
         var typesMap = Map[String,java.util.LinkedHashSet[OntologyType]]()
         var i = 0;
         // CAUTION: this assumes that the most specific type is listed last
-        val parser = new NxParser(instanceTypesStream)
+        val parser = new NxParser().parse(instanceTypesStream)
         while (parser.hasNext) {
             val triple = parser.next
             if(!triple(2).toString.endsWith("owl#Thing")) {
