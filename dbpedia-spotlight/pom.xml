@@ -25,7 +25,7 @@
     <properties>
         <dbpedia.spotlight.version>0.7</dbpedia.spotlight.version>
 
-        <java.compiler.version>1.7</java.compiler.version>
+        <java.compiler.version>1.8</java.compiler.version>
         <scala.compiler.version>2.9.2</scala.compiler.version>
         <lucene.version>3.6.0</lucene.version>
         <jersey.version>1.10</jersey.version>
@@ -41,7 +41,7 @@
     <artifactId>spotlight</artifactId>
     <version>0.7</version>
     <packaging>pom</packaging>
-    <name>DBpedia Spotlight annotation framework (parent POM)</name>
+    <name>DBpedia Spotlight Extraction framework (parent POM)</name>
 
     <modules>
         <module>core</module>

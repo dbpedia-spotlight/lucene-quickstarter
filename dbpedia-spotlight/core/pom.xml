@@ -31,7 +31,7 @@
 
     <artifactId>core</artifactId>
     <packaging>jar</packaging>
-    <name>DBpedia Spotlight Core</name>
+    <name>DBpedia Spotlight Extraction Core</name>
 
     <properties>
         <spotlight.basedir>${project.basedir}/..</spotlight.basedir>
