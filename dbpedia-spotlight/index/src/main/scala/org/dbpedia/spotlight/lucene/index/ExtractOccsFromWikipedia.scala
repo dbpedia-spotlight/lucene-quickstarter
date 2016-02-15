@@ -28,6 +28,9 @@ import org.dbpedia.spotlight.model.DBpediaResourceOccurrence
 import org.dbpedia.spotlight.BzipUtils
 import org.dbpedia.extraction.util.Language
 
+import scala.io.Source
+import scala.util.matching.Regex
+
 /**
  * Saves Occurrences to a TSV file.
  * - Surface forms are taken from anchor texts
@@ -46,6 +49,7 @@ object ExtractOccsFromWikipedia {
     def main(args : Array[String]) {
         val indexingConfigFileName = args(0)
         val targetFileName = args(1)
+        var blacklistedURIPatterns = Set[Regex]()
 
         val config = new IndexingConfiguration(indexingConfigFileName)
         var wikiDumpFileName    = config.get("org.dbpedia.spotlight.data.wikipediaDump")
@@ -54,6 +58,10 @@ object ExtractOccsFromWikipedia {
         val maxContextWindowSize  = config.get("org.dbpedia.spotlight.data.maxContextWindowSize").toInt
         val minContextWindowSize  = config.get("org.dbpedia.spotlight.data.minContextWindowSize").toInt
         val languageCode = config.get("org.dbpedia.spotlight.language_i18n_code")
+        val language = config.getLanguage().toLowerCase
+        //Bad URIs -- will exclude any URIs that match these patterns. Used for Lists, disambiguations, etc.
+        val blacklistedURIPatternsFileName = config.get("org.dbpedia.spotlight.data.badURIs."+language)
+        blacklistedURIPatterns = Source.fromFile(blacklistedURIPatternsFileName).getLines.map( u => u.r ).toSet
 
 
         if (wikiDumpFileName.endsWith(".bz2")) {
@@ -71,9 +79,8 @@ object ExtractOccsFromWikipedia {
 
         val filters = (conceptUriFilter :: redirectResolver :: contextNarrowFilter :: Nil)
 
-        val occSource : Traversable[DBpediaResourceOccurrence] = AllOccurrenceSource.fromXMLDumpFile(new File(wikiDumpFileName), Language(languageCode))
-        //val filter = new OccurrenceFilter(redirectsTC = redirectsTCMap, conceptURIs = conceptUrisSet, contextExtractor = narrowContext)
-        //val occs = filter.filter(occSource)
+
+        val occSource : Traversable[DBpediaResourceOccurrence] = AllOccurrenceSource.fromXMLDumpFile(new File(wikiDumpFileName), Language(languageCode), blacklistedURIPatterns)
 
         val occs = filters.foldLeft(occSource){ (o,f) => f.filterOccs(o) }
 

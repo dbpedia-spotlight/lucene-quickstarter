@@ -23,6 +23,7 @@ import org.dbpedia.extraction.wikiparser._
 import org.dbpedia.extraction.sources.{Source, XMLSource}
 import org.dbpedia.spotlight.log.SpotlightLog
 import java.io.{File}
+import scala.util.matching.Regex
 import xml.{XML, Elem}
 import org.dbpedia.extraction.util.Language
 
@@ -42,34 +43,45 @@ object AllOccurrenceSource
     /**
      * Creates an DBpediaResourceOccurrence Source from a dump file.
      */
-    def fromXMLDumpFile(dumpFile : File, language: Language) : OccurrenceSource =
+    def fromXMLDumpFile(dumpFile : File, language: Language, blacklistedURIPatterns:Set[Regex]) : OccurrenceSource =
     {
-        new AllOccurrenceSource(XMLSource.fromFile(dumpFile, language, _.namespace == Namespace.Main))
+        new AllOccurrenceSource(XMLSource.fromFile(dumpFile, language, _.namespace == Namespace.Main),blacklistedURIPatterns)
     }
 
     /**
      * Creates an DBpediaResourceOccurrence Source from an XML root element.
      */
-    def fromXML(xml : Elem, language: Language) : OccurrenceSource  =
+    def fromXML(xml : Elem, language: Language, blacklistedURIPatterns:Set[Regex]) : OccurrenceSource  =
     {
-        new AllOccurrenceSource(XMLSource.fromXML(xml, language))
+        new AllOccurrenceSource(XMLSource.fromXML(xml, language), blacklistedURIPatterns)
     }
 
     /**
      * Creates an DBpediaResourceOccurrence Source from an XML root element string.
      */
-    def fromXML(xmlString : String, language: Language) : OccurrenceSource  =
+    def fromXML(xmlString : String, language: Language, blacklistedURIPatterns:Set[Regex]) : OccurrenceSource  =
     {
         val xml : Elem = XML.loadString("<dummy>" + xmlString + "</dummy>")  // dummy necessary: when a string "<page><b>text</b></page>" is given, <page> is the root tag and can't be found with the command  xml \ "page"
-        new AllOccurrenceSource(XMLSource.fromXML(xml, language))
+        new AllOccurrenceSource(XMLSource.fromXML(xml, language), blacklistedURIPatterns)
     }
 
     /**
      * DBpediaResourceOccurrence Source which reads from a wiki pages source.
      */
-    private class AllOccurrenceSource(wikiPages : Source, multiplyDisambigs : Int=MULTIPLY_DISAMBIGUATION_CONTEXT) extends OccurrenceSource
+    private class AllOccurrenceSource(wikiPages : Source, blacklistedURIPatterns:Set[Regex], multiplyDisambigs : Int=MULTIPLY_DISAMBIGUATION_CONTEXT) extends OccurrenceSource
     {
         val wikiParser = new SimpleWikiParser()
+
+
+        def replacePattern(content :String) : String = {
+            var result = content
+
+            blacklistedURIPatterns.foreach( b=> {
+                result = result.replace(b.pattern.pattern(), "");
+            })
+
+            result
+        }
 
         override def foreach[U](f : DBpediaResourceOccurrence => U) : Unit =
         {
@@ -90,8 +102,7 @@ object AllOccurrenceSource
                     pageNode = wikiParser( WikiPageUtil.copyWikiPage(wikiPage, cleanSource) ).get
 
                     if (!None.canEqual(pageNode) ) {
-                        val surfaceForm = new SurfaceForm(
-                            wikiPage.title.decoded.replace(" (disambiguation)", "").replaceAll("""^(The|A) """, "")) //TODO i18n
+                        val surfaceForm = new SurfaceForm(replacePattern(wikiPage.title.decoded))
 
 
                         // split the page node into list items
@@ -135,8 +146,7 @@ object AllOccurrenceSource
 
                     // Definition a.k.a. WikiPageContext
                     val resource = new DBpediaResource(pageNode.title.encoded)
-                    val surfaceForm = new SurfaceForm(pageNode.title.decoded.replaceAll(""" \(.+?\)$""", "")
-                                                                            .replaceAll("""^(The|A) """, ""))
+                    val surfaceForm = new SurfaceForm(pageNode.title.decoded.replaceAll(""" \(.+?\)$""", ""))
                     val pageContext = new Text( WikiPageContextSource.getPageText(pageNode) )
                     val offset = pageContext.text.indexOf(surfaceForm.name)
                     f( new DBpediaResourceOccurrence(pageNode.title.encoded+"-", resource, surfaceForm, pageContext, offset, Provenance.Wikipedia) )
