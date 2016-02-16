@@ -53,9 +53,9 @@ If you are here, seems that you have a new index ready for use. If not, tell us 
 
 ## Supported Extraction Framework versions
 
-*3.9  - stable
+* 3.9  - stable
 
-*4.0, 4.1 - working in progress
+* 4.0, 4.1 - working in progress
 
 
 ## About
