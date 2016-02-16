@@ -19,6 +19,7 @@
 package org.dbpedia.spotlight.util
 
 
+import java.net.URLDecoder
 import java.util
 
 import io.Source
@@ -42,8 +43,7 @@ import scala.util.matching.Regex
  *
  * Contains logic of what to index wrt. URIs and SurfaceForms.
  *
- *
- * @author maxjakob
+  * @author maxjakob
  * @author pablomendes (created blacklisted URI patterns for language-specific stuff (e.g. List_of, etc.)
  */
 object ExtractCandidateMap
@@ -81,7 +81,7 @@ object ExtractCandidateMap
             var triples = new NxParser().parse(input)
             while (triples.hasNext) {
                 val triple = triples.next()
-                val badUri = triple(0).toString.replace(SpotlightConfiguration.DEFAULT_NAMESPACE, "")
+                val badUri = URLDecoder.decode(triple(0).getLabel.toString.replace(SpotlightConfiguration.DEFAULT_NAMESPACE, ""), "UTF-8")
                 badURIs += badUri
                 badURIStream.println(badUri)
             }
@@ -95,7 +95,7 @@ object ExtractCandidateMap
         val parser = new NxParser().parse(titlesInputStream)
         while (parser.hasNext) {
             val triple = parser.next
-            val uri = triple(0).toString.replace(SpotlightConfiguration.DEFAULT_NAMESPACE, "")
+            val uri =  URLDecoder.decode(triple(0).getLabel.toString.replace(SpotlightConfiguration.DEFAULT_NAMESPACE, ""), "UTF-8")
             if (looksLikeAGoodURI(uri) && !badURIs.contains(uri))
                 conceptURIStream.println(uri)
         }

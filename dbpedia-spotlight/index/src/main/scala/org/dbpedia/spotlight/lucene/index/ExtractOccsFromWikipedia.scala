@@ -79,8 +79,9 @@ object ExtractOccsFromWikipedia {
 
         val filters = (conceptUriFilter :: redirectResolver :: contextNarrowFilter :: Nil)
 
+        val ocurrences = new AllOccurrenceSource(blacklistedURIPatterns)
 
-        val occSource : Traversable[DBpediaResourceOccurrence] = AllOccurrenceSource.fromXMLDumpFile(new File(wikiDumpFileName), Language(languageCode), blacklistedURIPatterns)
+        val occSource : Traversable[DBpediaResourceOccurrence] = ocurrences.fromXMLDumpFile(new File(wikiDumpFileName), Language(languageCode))
 
         val occs = filters.foldLeft(occSource){ (o,f) => f.filterOccs(o) }
 
