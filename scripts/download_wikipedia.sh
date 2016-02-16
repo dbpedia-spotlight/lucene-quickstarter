@@ -61,3 +61,5 @@ function download_file()
 #-----------------------------------------------------------------------------------------------------------------------------+
 create_dir ${WIKIPEDIA_DATA}/${LANG_i18n}
 download_file $WIKIMEDIA_DOWNLOADS/${LANG_i18n}"wiki/latest" ${LANG_i18n}"wiki-latest-pages-articles.xml.bz2" ${WIKIPEDIA_DATA}/${LANG_i18n}
+cd ${WIKIPEDIA_DATA}/${LANG_i18n}
+bzip2 -d ${LANG_i18n}"wiki-latest-pages-articles.xml.bz2"
