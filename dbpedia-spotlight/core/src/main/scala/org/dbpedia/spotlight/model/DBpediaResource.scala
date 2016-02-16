@@ -20,7 +20,7 @@ import scala.collection.JavaConversions._
 import org.dbpedia.extraction.util.WikiUtil
 
 
-@serializable
+
 class DBpediaResource(var uri : String,
                       var support : Int = 0,
                       var prior : Double = 0.0,

@@ -43,7 +43,7 @@ object CompactHashMap {
 }
 
 /** Mutable CompactHashMap */
-@cloneable
+
 class CompactHashMap[K: ClassManifest, V: ClassManifest] () extends scala.collection.mutable.Map[K,V] with Serializable {
 
   private def this (keys: FixedHashSet[K], values: Array[V]) = {

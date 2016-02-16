@@ -31,7 +31,7 @@ import org.dbpedia.extraction.util.Language
  * Loads Occurrences from a wiki dump.
  */
 
-object AllOccurrenceSource
+class AllOccurrenceSource( blacklistedURIPatterns : Set[Regex])
 {
     val MULTIPLY_DISAMBIGUATION_CONTEXT = 10
 
@@ -43,32 +43,15 @@ object AllOccurrenceSource
     /**
      * Creates an DBpediaResourceOccurrence Source from a dump file.
      */
-    def fromXMLDumpFile(dumpFile : File, language: Language, blacklistedURIPatterns:Set[Regex]) : OccurrenceSource =
+    def fromXMLDumpFile(dumpFile : File, language: Language) : OccurrenceSource =
     {
-        new AllOccurrenceSource(XMLSource.fromFile(dumpFile, language, _.namespace == Namespace.Main),blacklistedURIPatterns)
-    }
-
-    /**
-     * Creates an DBpediaResourceOccurrence Source from an XML root element.
-     */
-    def fromXML(xml : Elem, language: Language, blacklistedURIPatterns:Set[Regex]) : OccurrenceSource  =
-    {
-        new AllOccurrenceSource(XMLSource.fromXML(xml, language), blacklistedURIPatterns)
-    }
-
-    /**
-     * Creates an DBpediaResourceOccurrence Source from an XML root element string.
-     */
-    def fromXML(xmlString : String, language: Language, blacklistedURIPatterns:Set[Regex]) : OccurrenceSource  =
-    {
-        val xml : Elem = XML.loadString("<dummy>" + xmlString + "</dummy>")  // dummy necessary: when a string "<page><b>text</b></page>" is given, <page> is the root tag and can't be found with the command  xml \ "page"
-        new AllOccurrenceSource(XMLSource.fromXML(xml, language), blacklistedURIPatterns)
+        new AllOccurrenceSource(XMLSource.fromFile(dumpFile, language, _.namespace == Namespace.Main))
     }
 
     /**
      * DBpediaResourceOccurrence Source which reads from a wiki pages source.
      */
-    private class AllOccurrenceSource(wikiPages : Source, blacklistedURIPatterns:Set[Regex], multiplyDisambigs : Int=MULTIPLY_DISAMBIGUATION_CONTEXT) extends OccurrenceSource
+    private class AllOccurrenceSource(wikiPages : Source, multiplyDisambigs : Int=MULTIPLY_DISAMBIGUATION_CONTEXT) extends OccurrenceSource
     {
         val wikiParser = new SimpleWikiParser()
 
@@ -77,7 +60,7 @@ object AllOccurrenceSource
             var result = content
 
             blacklistedURIPatterns.foreach( b=> {
-                result = result.replace(b.pattern.pattern(), "");
+                result = result.replace(b.pattern.pattern(), "")
             })
 
             result

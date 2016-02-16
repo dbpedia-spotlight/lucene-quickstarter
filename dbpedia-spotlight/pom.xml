@@ -25,8 +25,9 @@
     <properties>
         <dbpedia.spotlight.version>0.7</dbpedia.spotlight.version>
 
-        <java.compiler.version>1.8</java.compiler.version>
-        <scala.compiler.version>2.9.2</scala.compiler.version>
+        <java.compiler.version>1.7</java.compiler.version>
+        <scala.compiler.version>2.11.4</scala.compiler.version>
+        <scala.compiler.version.minor>2.11</scala.compiler.version.minor>
         <lucene.version>3.6.0</lucene.version>
         <jersey.version>1.10</jersey.version>
 
@@ -54,7 +55,7 @@
                 <plugin>
                     <groupId>net.alchim31.maven</groupId>
                     <artifactId>scala-maven-plugin</artifactId>
-                    <version>3.1.5</version>
+                    <version>3.2.0</version>
                     <!--
                         License: LGPL, Version 2.1
                     -->
@@ -179,28 +180,7 @@
          https://github.com/dbpedia-spotlight/dbpedia-spotlight/wiki/Libraries-info
     -->
 
-    <dependencies>
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-compiler</artifactId>
-            <version>2.10.2</version>
-            <scope>provided</scope>
-            <!--
-                License: Scala License
-                http://www.scala-lang.org/node/146
-            -->
-        </dependency>
 
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-library</artifactId>
-            <version>2.10.2</version>
-            <!--
-                License: Scala License
-                http://www.scala-lang.org/node/146
-            -->
-        </dependency>
-    </dependencies>
 
     <dependencyManagement>
         <dependencies>
@@ -240,7 +220,7 @@
             <dependency>
                 <groupId>org.dbpedia.extraction</groupId>
                 <artifactId>core</artifactId>
-                <version>4.1</version>
+                <version>4.0</version>
                 <!--
                     License: Apache Software License, Version 2.0
                 -->
@@ -488,14 +468,6 @@
                 -->
             </dependency>
 
-            <dependency>
-                <groupId>org.scalatest</groupId>
-                <artifactId>scalatest_2.9.2</artifactId>
-                <version>2.0.M4</version>
-                <!--
-                    License: Apache Software License, Version 2.0
-                -->
-            </dependency>
 
             <dependency>
                 <groupId>trove</groupId>
@@ -549,14 +521,6 @@
                 -->
             </dependency>
 
-            <dependency>
-                <groupId>org.scalanlp</groupId>
-                <artifactId>breeze-learn_2.9.2</artifactId>
-                <version>0.1</version>
-                <!--
-                    License: Apache Software License, Version 2.0
-                -->
-            </dependency>
 
             <dependency>
                 <groupId>com.typesafe.akka</groupId>
@@ -639,8 +603,8 @@
 
             <dependency>
                 <groupId>org.scalaz</groupId>
-                <artifactId>scalaz-core_${scala.compiler.version}</artifactId>
-                <version>6.0.4</version>
+                <artifactId>scalaz-core_${scala.compiler.version.minor}</artifactId>
+                <version>7.2.0</version>
                 <!--
                   License: BSD 3-Clause
                 -->
@@ -711,14 +675,7 @@
             </dependency>
 
 
-            <dependency>
-                <groupId>net.liftweb</groupId>
-                <artifactId>lift-json_2.9.2</artifactId>
-                <version>2.5-M1</version>
-                <!--
-                  License: Apache Software License, Version 2.0
-                -->
-            </dependency>
+
 
             <dependency>
                 <groupId>weka</groupId>

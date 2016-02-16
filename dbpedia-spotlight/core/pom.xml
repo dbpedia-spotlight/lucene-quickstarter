@@ -136,10 +136,6 @@
             <artifactId>weka</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>net.liftweb</groupId>
-            <artifactId>lift-json_${scala.compiler.version}</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>junit</groupId>
@@ -191,11 +187,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.scalatest</groupId>
-            <artifactId>scalatest_${scala.compiler.version}</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>com.esotericsoftware.kryo</groupId>
             <artifactId>kryo</artifactId>
         </dependency>
@@ -222,13 +213,9 @@
 
         <dependency>
             <groupId>org.scalaz</groupId>
-            <artifactId>scalaz-core_${scala.compiler.version}</artifactId>
+            <artifactId>scalaz-core_${scala.compiler.version.minor}</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.scalanlp</groupId>
-            <artifactId>breeze-learn_${scala.compiler.version}</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>com.typesafe.akka</groupId>
