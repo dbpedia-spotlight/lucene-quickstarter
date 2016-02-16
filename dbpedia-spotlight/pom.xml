@@ -220,7 +220,7 @@
             <dependency>
                 <groupId>org.dbpedia.extraction</groupId>
                 <artifactId>core</artifactId>
-                <version>4.1e</version>
+                <version>4.0</version>
                 <!--
                     License: Apache Software License, Version 2.0
                 -->
