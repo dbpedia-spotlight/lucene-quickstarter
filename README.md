@@ -9,7 +9,7 @@ Quickstarter for DBpedia Spotlight Lucene
 
 You can use this repository for creating lucene backend index of DBpedia Spotlight in your language.
 
-The repo is ready to use for the follow languages: german , greek , english, spanish, french , italian, dutch, polish, portuguese, hungarian and russian.
+The repo is ready to use for the follow languages: catalan, german , greek , english, spanish, french , italian, dutch, polish, portuguese, hungarian and russian.
 
 ## Why my language is not supported yet?
 
