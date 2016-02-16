@@ -1,6 +1,7 @@
 #!/bin/bash
 readonly DBPEDIA_VERSION=$1
 ./index_config_file.sh ${DBPEDIA_VERSION} ar arabic org.apache.lucene.analysis.ar.ArabicAnalyzer
+./index_config_file.sh ${DBPEDIA_VERSION} ca catalan org.apache.lucene.analysis.ca.CatalanAnalyzer
 ./index_config_file.sh ${DBPEDIA_VERSION} cz czech  org.apache.lucene.analysis.cz.CzechAnalyzer
 ./index_config_file.sh ${DBPEDIA_VERSION} de german  org.apache.lucene.analysis.de.GermanAnalyzer
 ./index_config_file.sh ${DBPEDIA_VERSION} el greek  org.apache.lucene.analysis.el.GreekAnalyzer
@@ -17,6 +18,7 @@ readonly DBPEDIA_VERSION=$1
 
 
 ./index_server_file.sh ${DBPEDIA_VERSION} ar arabic org.apache.lucene.analysis.ar.ArabicAnalyzer
+./index_server_file.sh ${DBPEDIA_VERSION} ca catalan org.apache.lucene.analysis.ca.CatalanAnalyzer
 ./index_server_file.sh ${DBPEDIA_VERSION} cz czech  org.apache.lucene.analysis.cz.CzechAnalyzer
 ./index_server_file.sh ${DBPEDIA_VERSION} de german  org.apache.lucene.analysis.de.GermanAnalyzer
 ./index_server_file.sh ${DBPEDIA_VERSION} el greek  org.apache.lucene.analysis.el.GreekAnalyzer
