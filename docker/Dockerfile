@@ -12,4 +12,8 @@ RUN mkdir -p /mnt/dbpedia && \
     cd /mnt/dbpedia && \
     git clone https://github.com/sandroacoelho/lucene-quickstarter.git && \
     cd /mnt/dbpedia/lucene-quickstarter/dbpedia-spotlight && \
-    mvn clean install
+    mvn clean install && \
+    mkdir /data/tmp && \
+    chmod 1777 /data/tmp && \
+    rm /tmp && \
+    ln -s /data/tmp /tmp && \
