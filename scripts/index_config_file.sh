@@ -7,7 +7,7 @@ readonly LUCENE_CLASS=$4
 
 echo "# Wikipedia Dump" > ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "# --------------" >> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
-echo "org.dbpedia.spotlight.data.wikipediaDump=${ROOT_DIRECTORY}/wikipedia/${LANG_i18n}/${LANG_i18n}wiki-latest-pages-articles.xml.bz2">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
+echo "org.dbpedia.spotlight.data.wikipediaDump=${ROOT_DIRECTORY}/wikipedia/${LANG_i18n}/${LANG_i18n}wiki-latest-pages-articles.xml">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "# Location for DBpedia resources index (output)">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "org.dbpedia.spotlight.index.dir=${ROOT_DIRECTORY}/spotlight/${LANG_i18n}/index">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
