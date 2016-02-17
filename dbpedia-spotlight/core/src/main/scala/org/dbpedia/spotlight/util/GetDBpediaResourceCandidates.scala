@@ -32,7 +32,7 @@ object GetDBpediaResourceCandidates {
         val out = new PrintWriter(uriSetFile);
 
         var i = 0;
-        Source.fromFile(surfaceFormSetFile).getLines.foreach( name => {
+        Source.fromFile(surfaceFormSetFile, FileUtils.FORMAT).getLines.foreach( name => {
             i = i + 1
             SpotlightLog.info(this.getClass, "Surface Form %s : %s", i.toString, name.toString)
             val sf = Factory.SurfaceForm.fromString(name);

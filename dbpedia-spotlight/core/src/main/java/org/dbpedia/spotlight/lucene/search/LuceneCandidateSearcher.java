@@ -129,13 +129,5 @@ public class LuceneCandidateSearcher extends BaseSearcher implements org.dbpedia
         return hits.length;
     }
 
-    public static void main(String[] args) throws IOException, SearchException, ItemNotFoundException {
-        //String dir = "/home/pablo/workspace/spotlight/output/candidateIndexTitRedDis";
-        String dir = "/home/pablo/workspace/spotlight/index/output/candidateIndexTitRedDis";
-        LuceneManager luceneManager = new LuceneManager.CaseSensitiveSurfaceForms(FSDirectory.open(new File(dir)));
-        CandidateSearcher searcher = new LuceneCandidateSearcher(luceneManager, true);
-        System.out.println(searcher.getCandidates(new SurfaceForm("berlin")));
-        System.out.println(searcher.getCandidates(new SurfaceForm("Berlin")));
-        System.out.println(searcher.getCandidates(new SurfaceForm("sdaf")));
-    }
+
 }

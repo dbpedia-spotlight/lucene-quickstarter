@@ -88,7 +88,7 @@ class IndexingConfiguration(val configFile: File) {
     def getStopWords(language: String) : Set[String] = {
         val f = new File(get("org.dbpedia.spotlight.data.stopWords."+language.toLowerCase, ""))
         try {
-            Source.fromFile(f, "UTF-8").getLines.toSet
+            Source.fromFile(f, FileUtils.FORMAT).getLines.toSet
         }
         catch {
             case e: FileNotFoundException => throw new ConfigurationException("stop words file not found: "+f, e)

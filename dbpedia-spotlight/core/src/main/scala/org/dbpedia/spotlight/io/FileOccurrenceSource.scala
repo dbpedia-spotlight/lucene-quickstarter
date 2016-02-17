@@ -17,6 +17,7 @@
 package org.dbpedia.spotlight.io
 
 import org.dbpedia.spotlight.model._
+import org.dbpedia.spotlight.util.FileUtils
 import io.Source
 import org.dbpedia.spotlight.log.SpotlightLog
 import java.io._
@@ -50,7 +51,7 @@ object FileOccurrenceSource
         if (tsvFile.getName.endsWith(".gz")) {
             o = new GZIPOutputStream(o)
         }
-        val outStream = new PrintStream(o, true, "UTF-8")
+        val outStream = new PrintStream(o, true, FileUtils.FORMAT)
 
         for (occ <- occSource) {
             outStream.println(occ.toTsvString)
@@ -77,7 +78,7 @@ object FileOccurrenceSource
         if (tsvFile.getName.endsWith(".gz")) {
             o = new GZIPOutputStream(o)
         }
-        val outStream = new PrintStream(o, true, "UTF-8")
+        val outStream = new PrintStream(o, true, FileUtils.FORMAT)
 
         for (definition <- defSource) {
             outStream.println(definition.toTsvString)
@@ -111,7 +112,7 @@ object FileOccurrenceSource
             //     call fromInputStream only with one argument
             var linesIterator : Iterator[String] = Iterator.empty
             try {
-                linesIterator = Source.fromInputStream(input, "UTF-8").getLines
+                linesIterator = Source.fromInputStream(input, FileUtils.FORMAT).getLines
             }
             catch {
                 case e: java.nio.charset.MalformedInputException => linesIterator = Source.fromInputStream(input).getLines
@@ -147,7 +148,7 @@ object FileOccurrenceSource
                 input = new GZIPInputStream(input)
             }
 
-            for (line <- Source.fromInputStream(input, "UTF-8").getLines) {
+            for (line <- Source.fromInputStream(input, FileUtils.FORMAT).getLines) {
                 try {
                     val elements = line.trim.split("\t")
                     if (elements.length == 2)

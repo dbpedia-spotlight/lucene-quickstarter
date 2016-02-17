@@ -36,9 +36,8 @@ import org.apache.lucene.search.similar.MoreLikeThis;
 import org.apache.lucene.store.*;
 import org.apache.lucene.util.Version;
 import org.dbpedia.spotlight.exceptions.SearchException;
-import org.dbpedia.spotlight.lucene.analysis.NGramAnalyzer;
-import org.dbpedia.spotlight.lucene.analysis.PhoneticAnalyzer;
 import org.dbpedia.spotlight.lucene.search.CandidateResourceQuery;
+import org.dbpedia.spotlight.util.FileUtils;
 import org.dbpedia.spotlight.util.MemUtil;
 import org.dbpedia.spotlight.model.*;
 
@@ -480,7 +479,7 @@ public class LuceneManager {
         String[] fields = {DBpediaResourceField.CONTEXT.toString()};
         mlt.setFieldNames(fields);
         mlt.setAnalyzer(this.mDefaultAnalyzer);
-        InputStream inputStream = new ByteArrayInputStream(text.text().getBytes("UTF-8"));
+        InputStream inputStream = new ByteArrayInputStream(text.text().getBytes(FileUtils.FORMAT));
         Query query = mlt.like(inputStream);
         return query;
     }
@@ -736,121 +735,7 @@ public class LuceneManager {
     }
 
     /**
-     * LuceneManager subclass that uses a character NGramAnalyzer to do approximate matching of surface forms
-     * @author pablomendes
-     */
-    public static class NGramSurfaceForms extends LuceneManager {
-
-        // How to break down the input text
-        private Analyzer mSurfaceFormAnalyzer = new NGramAnalyzer(3,3);
-
-        public NGramSurfaceForms(Directory dir) throws IOException {
-            super(dir);
-            mPerFieldAnalyzers.put(LuceneManager.DBpediaResourceField.SURFACE_FORM.toString(), mSurfaceFormAnalyzer);
-            setDefaultAnalyzer(new PerFieldAnalyzerWrapper(new StandardAnalyzer(Version.LUCENE_36), mPerFieldAnalyzers));
-        }
-
-        @Override
-        public Field getField(SurfaceForm surfaceForm) {
-            return new Field(LuceneManager.DBpediaResourceField.SURFACE_FORM.toString(),
-                            surfaceForm.name(),
-                            Field.Store.YES,
-                            Field.Index.ANALYZED);
-        }
-
-        @Override
-        public Query getQuery(SurfaceForm sf) throws SearchException {
-            QueryParser parser = new QueryParser(Version.LUCENE_36, DBpediaResourceField.SURFACE_FORM.toString(), mSurfaceFormAnalyzer);
-            Query sfQuery = null;
-            //TODO escape (instead of remove) special characters in Text before querying
-            // + - && || ! ( ) { } [ ] ^ " ~ * ? : \
-            //http://lucene.apache.org/java/3_0_2/queryparsersyntax.html#Escaping
-            String queryText = sf.name().replaceAll("[\\+\\-\\|!\\(\\)\\{\\}\\[\\]\\^~\\*\\?\"\\\\:&]", " ");
-            queryText = QueryParser.escape(queryText);
-            try {
-                sfQuery = parser.parse(queryText);
-            } catch (ParseException e) {
-                StringBuffer msg = new StringBuffer();
-                msg.append("Error parsing surface form. ");
-                if (e.getMessage().contains("too many boolean clauses")) {
-                    msg.append(String.format("QueryParser broke with %s tokens.",queryText.split("\\W+").length));
-                }
-                msg.append("\n");
-                msg.append(sf);
-                msg.append("\n");
-                e.printStackTrace();
-                throw new SearchException(msg.toString(),e);
-            }
-            return sfQuery;
-        }
-
-//        @Override
-//        public Set<Term> getTerms(SurfaceForm sf) {
-//            Set<Term> sfTerms = new HashSet<Term>();
-//            //TODO run sf through analyzers
-//            return sfTerms;
-//        }
-
-    }
-
-    /**
-     *
-     * LuceneManager subclass that uses a PhoneticAnalyzer to do approximate matching of surface forms
-     * TODO there should be a generic AnalyzedSurfaceforms that takes a SpotlightConfiguration object, pulls the analyzer and uses it.
-     *      see the redundancy between N-Gram and Phonetic. The CaseInsensitive could be done the same way.
-     *
-     * @author pablomendes
-     */
-    public static class PhoneticSurfaceForms extends LuceneManager {
-
-        // How to break down the input text
-        private Analyzer mSurfaceFormAnalyzer = new PhoneticAnalyzer(Version.LUCENE_36, SpotlightConfiguration.DEFAULT_STOPWORDS); //TODO grab from configuration
-
-        public PhoneticSurfaceForms(Directory dir) throws IOException {
-            super(dir);
-            mPerFieldAnalyzers.put(LuceneManager.DBpediaResourceField.SURFACE_FORM.toString(), mSurfaceFormAnalyzer);
-            setDefaultAnalyzer(new PerFieldAnalyzerWrapper(new StandardAnalyzer(Version.LUCENE_36), mPerFieldAnalyzers));
-        }
-
-        @Override
-        public Field getField(SurfaceForm surfaceForm) {
-            return new Field(LuceneManager.DBpediaResourceField.SURFACE_FORM.toString(),
-                    surfaceForm.name(),
-                    Field.Store.YES,
-                    Field.Index.ANALYZED,
-                    Field.TermVector.YES);
-        }
-
-        @Override
-        public Query getQuery(SurfaceForm sf) throws SearchException {
-            QueryParser parser = new QueryParser(Version.LUCENE_36, DBpediaResourceField.SURFACE_FORM.toString(), mSurfaceFormAnalyzer);
-            Query sfQuery = null;
-            //TODO escape (instead of remove) special characters in Text before querying
-            // + - && || ! ( ) { } [ ] ^ " ~ * ? : \
-            //http://lucene.apache.org/java/3_0_2/queryparsersyntax.html#Escaping
-            String queryText = sf.name().replaceAll("[\\+\\-\\|!\\(\\)\\{\\}\\[\\]\\^~\\*\\?\"\\\\:&]", " ");
-            queryText = QueryParser.escape(queryText);
-            try {
-                sfQuery = parser.parse(queryText);
-            } catch (ParseException e) {
-                StringBuffer msg = new StringBuffer();
-                msg.append("Error parsing surface form. ");
-                if (e.getMessage().contains("too many boolean clauses")) {
-                    msg.append(String.format("QueryParser broke with %s tokens.",queryText.split("\\W+").length));
-                }
-                msg.append("\n");
-                msg.append(sf);
-                msg.append("\n");
-                e.printStackTrace();
-                throw new SearchException(msg.toString(),e);
-            }
-            return sfQuery;
-        }
-
-    }
-
-    /**
-     * LuceneManager subclass used by the {@link org.dbpedia.spotlight.lucene.index.MergedOccurrencesContextIndexer}
+     * LuceneManager subclass
      * It stores buffering configuration information.
      */
     public static class BufferedMerging extends LuceneManager {

@@ -98,7 +98,7 @@ object WikiOccurrenceSource
                 val cleanSource = WikiMarkupStripper.stripEverything(wikiPage.source)
 
                 // parse the (clean) wiki page
-                val pageNode = wikiParser( WikiPageUtil.copyWikiPage(wikiPage, cleanSource) ).get
+                val pageNode = wikiParser( WikiPageUtil.copyWikiPage(wikiPage, cleanSource) )
 
                 // exclude redirect and disambiguation pages
                 if (!None.canEqual(pageNode) && !pageNode.isRedirect && !pageNode.isDisambiguation) {
