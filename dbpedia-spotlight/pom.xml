@@ -29,7 +29,6 @@
         <scala.compiler.version>2.10.2</scala.compiler.version>
         <scala.compiler.version.minor>2.10</scala.compiler.version.minor>
         <lucene.version>3.6.0</lucene.version>
-        <jersey.version>1.10</jersey.version>
 
         <heapspace.Xmx.compiler>-Xmx1g</heapspace.Xmx.compiler>
         <heapspace.Xmx.indexer>-Xmx1g</heapspace.Xmx.indexer>
