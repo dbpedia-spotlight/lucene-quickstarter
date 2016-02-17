@@ -33,7 +33,7 @@ import org.dbpedia.spotlight.lucene.similarity.{CachedInvCandFreqSimilarity, JCS
 import org.apache.lucene.misc.SweetSpotSimilarity
 import org.apache.lucene.search.{DefaultSimilarity, ScoreDoc, Similarity}
 import scala.collection.JavaConverters._
-import org.dbpedia.spotlight.spot.{SpotSelector, AtLeastOneNounSelector, ShortSurfaceFormSelector}
+import org.dbpedia.spotlight.spot.SpotSelector
 import java.io.File
 
 /**
@@ -307,19 +307,7 @@ object Factory {
         }
     }
 
-    object SpotSelector {
-        def fromNameList(commaSeparatedNames: String) : List[SpotSelector] = {
-            commaSeparatedNames.split(",").flatMap(name => if (name.isEmpty) None else Some(fromName(name.trim))).toList
-        }
-        def fromName(name: String) : SpotSelector = { //TODO use reflection
-            if (name.isEmpty) throw new IllegalArgumentException("You need to pass a SpotSelector name.")
-            name match {
-                case "ShortSurfaceFormSelector" => new ShortSurfaceFormSelector
-                case "AtLeastOneNounSelector" => new AtLeastOneNounSelector
-                case _ => throw new ConfigurationException("SpotSelector of name %s has not been configured in the properties file.".format(name))
-            }
-        }
-    }
+
 
     object CandidateSearcher {
         def fromLuceneIndex(configuration: SpotlightConfiguration) = {

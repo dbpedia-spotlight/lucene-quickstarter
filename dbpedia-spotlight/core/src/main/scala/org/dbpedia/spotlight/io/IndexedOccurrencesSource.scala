@@ -4,10 +4,7 @@ import org.apache.lucene.document.Document
 import org.dbpedia.spotlight.lucene.LuceneManager
 import java.io.File
 import org.dbpedia.spotlight.model._
-import org.junit.Test
 import org.apache.lucene.store.Directory
-import org.apache.lucene.search.Similarity
-import org.dbpedia.spotlight.lucene.similarity.{JCSTermCache, CachedInvCandFreqSimilarity}
 import org.dbpedia.spotlight.lucene.search.{BaseSearcher, MergedOccurrencesContextSearcher}
 
 /**
@@ -61,10 +58,7 @@ object IndexedOccurrencesSource {
                     // apply closure on the occurrences
                     occurrences.foreach(o => f(o));
 
-                    // report
-                    //if (i % fivePercentOfIndex == 0) {
-                    //LOG.trace("  processed " + i + " URIs.")
-                    //}
+
                 }
             }
         }

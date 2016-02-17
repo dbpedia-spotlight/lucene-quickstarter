@@ -41,7 +41,7 @@ object TypesLoader
             throw new IllegalArgumentException("types mapping only accepted in tsv format so far! can't parse "+typeDictFile)
         // CAUTION: this assumes that the most specific type is listed last
         var typesMap = Map[String,List[OntologyType]]()
-        for (line <- Source.fromFile(typeDictFile, "UTF-8").getLines) {
+        for (line <- Source.fromFile(typeDictFile, FileUtils.FORMAT).getLines) {
             val elements = line.split("\t")
             val uri = new DBpediaResource(elements(0)).uri
             val t = Factory.OntologyType.fromURI(elements(1))
@@ -56,7 +56,7 @@ object TypesLoader
         SpotlightLog.info(this.getClass, "Loading types map...")
         var typesMap = Map[String,java.util.LinkedHashSet[OntologyType]]()
         var i = 0;
-        for (line <- Source.fromInputStream(input, "UTF-8").getLines) {
+        for (line <- Source.fromInputStream(input, FileUtils.FORMAT).getLines) {
             val elements = line.split("\t")
             val uri = new DBpediaResource(elements(0)).uri
             val typeUri = elements(1)

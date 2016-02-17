@@ -73,7 +73,7 @@ object CreateLexicalizations {
 
     def getSurrogatesMap(surrogatesFile: File) : Map[(String,String),Int] = {
         var m = Map[(String,String),Int]()
-        Source.fromFile(surrogatesFile, "UTF-8").getLines.foreach{ line =>
+        Source.fromFile(surrogatesFile, FileUtils.FORMAT).getLines.foreach{ line =>
             val el = line.trim.split("\\s+", 4)
             val count = el(0).toInt
             val uri = el(1)
@@ -90,7 +90,7 @@ object CreateLexicalizations {
     def getLinkedSurrogatesMap(surrogatesFile: File) : Map[String,Map[String,Int]] = {
         System.err.println("Reading surrogates from "+surrogatesFile+" ...")
         var m = Map[String,Map[String,Int]]()
-        Source.fromFile(surrogatesFile, "UTF-8").getLines.foreach{ line =>
+        Source.fromFile(surrogatesFile, FileUtils.FORMAT).getLines.foreach{ line =>
             val el = line.trim.split("\\s+", 3)
 
             if(el.length == 3) {  //  && el(0).toInt >= MIN_PAIR_COUNT

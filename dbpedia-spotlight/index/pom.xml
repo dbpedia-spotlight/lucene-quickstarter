@@ -101,16 +101,6 @@
                             </args-->
                         </launcher>
                         <launcher>
-                            <id>CandidateIndexer</id>
-                            <mainClass>org.dbpedia.spotlight.lucene.index.CandidateIndexer</mainClass>
-                            <jvmArgs>
-                                <jvmArg>-Xmx${javaOpts.Xmx}</jvmArg>
-                            </jvmArgs>
-                            <!--args>
-                                <arg>../conf/indexing-3.8.properties</arg>
-                            </args-->
-                        </launcher>
-                        <launcher>
                             <id>AddTypesToIndex</id>
                             <mainClass>org.dbpedia.spotlight.lucene.index.AddTypesToIndex</mainClass>
                             <jvmArgs>
@@ -130,30 +120,7 @@
                                 <arg>../conf/indexing-3.8.properties</arg>
                             </args-->
                         </launcher>
-                        <launcher>
-                            <id>topicsignatures</id>
-                            <mainClass>org.dbpedia.spotlight.util.GetWebPriors</mainClass>
-                            <args>
-                                <arg>../conf/indexing-3.7.properties</arg>
-                                <arg>../conf/dev.properties</arg>
-                                <arg>/data/spotlight/3.7/conceptURIs.list</arg>
-                            </args>
-                            <jvmArgs>
-                                <jvmArg>-Xmx14G</jvmArg>
-                            </jvmArgs>
-                        </launcher>
 
-                        <launcher>
-                            <id>topicaltext</id>
-                            <mainClass>org.dbpedia.spotlight.util.ExtractTopicalText</mainClass>
-			                <!--args>
-                				<arg>/data/spotlight/enwiki-20101011-resolved-concepts.uriSorted.tsv</arg>
-                				<arg>/home/pablo/Projects/DBpediaSpotlight/IavorJelev/uri_pairs/Politics2_uri_pairs.txt</arg>
-			                </args-->
-                            <jvmArgs>
-                                <jvmArg>-Xmx3G</jvmArg>
-                            </jvmArgs>
-                        </launcher>
                     </launchers>
                 </configuration>
             </plugin>
@@ -169,76 +136,6 @@
             <artifactId>core</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.dbpedia.extraction</groupId>
-            <artifactId>core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.openrdf</groupId>
-            <artifactId>rio</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-core</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-analyzers</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-misc</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-queries</artifactId>
-            <type>jar</type>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.lucene</groupId>
-            <artifactId>lucene-phonetic</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-compress</artifactId>
-         </dependency>
-
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>weka</groupId>
-            <artifactId>weka</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>trove</groupId>
-            <artifactId>trove</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.mahout</groupId>
-            <artifactId>mahout-collections</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.esotericsoftware.kryo</groupId>
-            <artifactId>kryo</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-core-asl</artifactId>
-        </dependency>
 
     </dependencies>
 
