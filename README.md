@@ -56,6 +56,12 @@ If you are here, seems that you have a new index ready for use. If not, tell us 
 * 3.9  - stable
 
 * 4.0, 4.1 - working in progress
+* 
+
+## Supported Docker versions
+This image is officially supported on Docker version 1.9.1.
+
+Please see the [Docker installation documentation] (https://docs.docker.com/installation/) for details on how to upgrade your Docker daemon.
 
 
 ## About
