@@ -24,7 +24,7 @@ import java.io.{FileInputStream, File}
 import org.semanticweb.yars.nx.parser.NxParser
 import com.aliasi.dict.{DictionaryEntry, MapDictionary}
 import org.dbpedia.spotlight.model.DBpediaResourceOccurrence
-import org.dbpedia.spotlight.util.IndexingConfiguration
+import org.dbpedia.spotlight.util.{FileUtils, IndexingConfiguration}
 import io.Source
 import org.dbpedia.spotlight.io.{OccurrenceSource, IndexedOccurrencesSource}
 
@@ -83,7 +83,7 @@ object IndexLingPipeSpotter
 
     private def getDictionaryFromTSVSurrogates(surrogatesTSVFile : File, uriCountThreshold: Int) : MapDictionary[String] = {
         val dictionary = new MapDictionary[String]()
-        for (line <- Source.fromFile(surrogatesTSVFile, "UTF-8").getLines) {
+        for (line <- Source.fromFile(surrogatesTSVFile, FileUtils.FORMAT).getLines) {
             val fields = line.split("\t")
             var uriCount = 0
             try {
@@ -99,7 +99,7 @@ object IndexLingPipeSpotter
 
     private def getDictionaryFromTSV(surrogatesTSVFile : File) : MapDictionary[String] = {
         val dictionary = new MapDictionary[String]()
-        for (line <- Source.fromFile(surrogatesTSVFile, "UTF-8").getLines) {
+        for (line <- Source.fromFile(surrogatesTSVFile, FileUtils.FORMAT).getLines) {
             val fields = line.split("\t")
             val surfaceForm = fields(0)
             dictionary.addEntry(new DictionaryEntry[String](surfaceForm, ""))  // chunk type undefined
@@ -110,7 +110,7 @@ object IndexLingPipeSpotter
     //TODO how to deal with uriCountThreshold?
     private def getDictionaryFromList(surrogatesListFile : File) : MapDictionary[String] = {
         val dictionary = new MapDictionary[String]()
-        for (line <- Source.fromFile(surrogatesListFile, "UTF-8").getLines) {
+        for (line <- Source.fromFile(surrogatesListFile, FileUtils.FORMAT).getLines) {
             val surfaceForm = line.trim
             dictionary.addEntry(new DictionaryEntry[String](surfaceForm, ""))  // chunk type undefined
         }

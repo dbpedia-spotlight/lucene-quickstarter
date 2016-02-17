@@ -21,7 +21,7 @@ package org.dbpedia.spotlight.lucene.index
 
 import scala.collection.JavaConversions._
 import org.dbpedia.spotlight.model.SurfaceForm
-import org.dbpedia.spotlight.util.IndexingConfiguration
+import org.dbpedia.spotlight.util.{FileUtils, IndexingConfiguration}
 import java.util.Scanner
 import java.io.FileInputStream
 import org.dbpedia.spotlight.log.SpotlightLog
@@ -79,7 +79,7 @@ object AddSurfaceFormsToIndex
         SpotlightLog.info(this.getClass, "Getting surface form map...")
         val reverseMap : java.util.Map[String, java.util.LinkedHashSet[SurfaceForm]] = new java.util.HashMap[String, java.util.LinkedHashSet[SurfaceForm]]()
         val separator = "\t"
-        val tsvScanner = new Scanner(new FileInputStream(surfaceFormsFileName), "UTF-8")
+        val tsvScanner = new Scanner(new FileInputStream(surfaceFormsFileName), FileUtils.FORMAT)
         while (tsvScanner.hasNextLine) {
             val line = tsvScanner.nextLine.split(separator)
             try {

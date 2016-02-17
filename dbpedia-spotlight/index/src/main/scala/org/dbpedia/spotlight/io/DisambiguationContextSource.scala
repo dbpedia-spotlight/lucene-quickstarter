@@ -90,7 +90,7 @@ object DisambiguationContextSource
                 val cleanSource = WikiMarkupStripper.stripEverythingButBulletPoints(wikiPage.source)
 
                 // parse the (clean) wiki page
-                val pageNode = wikiParser( WikiPageUtil.copyWikiPage(wikiPage, cleanSource) ).get
+                val pageNode = wikiParser( WikiPageUtil.copyWikiPage(wikiPage, cleanSource) )
 
                 if (!None.canEqual(pageNode) && pageNode.isDisambiguation) {
                     val surfaceForm = new SurfaceForm(wikiPage.title.decoded.replace(" (disambiguation)", "")) //TODO language-specific

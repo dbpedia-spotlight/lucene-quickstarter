@@ -23,6 +23,8 @@ import org.dbpedia.extraction.wikiparser._
 import org.dbpedia.extraction.sources.{Source, XMLSource}
 import org.dbpedia.spotlight.log.SpotlightLog
 import java.io.{File}
+import org.dbpedia.spotlight.util.FileUtils
+
 import scala.util.matching.Regex
 import xml.{XML, Elem}
 import org.dbpedia.extraction.util.Language
@@ -73,8 +75,7 @@ class AllOccurrenceSource( blacklistedURIPatterns : Set[Regex])
 
             for (wikiPage <- wikiPages)
             {
-                val optionPageNode = wikiParser( wikiPage )
-                var pageNode = optionPageNode.get
+                var pageNode = wikiParser( wikiPage )
 
                 // disambiguations
                 if (!None.canEqual(pageNode) && pageNode.isDisambiguation) {
@@ -82,7 +83,7 @@ class AllOccurrenceSource( blacklistedURIPatterns : Set[Regex])
                     val cleanSource = WikiMarkupStripper.stripEverythingButBulletPoints(wikiPage.source)
 
                     // parse the (clean) wiki page
-                    pageNode = wikiParser( WikiPageUtil.copyWikiPage(wikiPage, cleanSource) ).get
+                    pageNode = wikiParser( WikiPageUtil.copyWikiPage(wikiPage, cleanSource) )
 
                     if (!None.canEqual(pageNode) ) {
                         val surfaceForm = new SurfaceForm(replacePattern(wikiPage.title.decoded))
@@ -113,7 +114,7 @@ class AllOccurrenceSource( blacklistedURIPatterns : Set[Regex])
                     val cleanSource = WikiMarkupStripper.stripEverything(wikiPage.source)
 
                     // parse the (clean) wiki page
-                    pageNode = wikiParser( WikiPageUtil.copyWikiPage(wikiPage, cleanSource) ).get
+                    pageNode = wikiParser( WikiPageUtil.copyWikiPage(wikiPage, cleanSource) )
     
                     // split the page node into paragraphs
                     val paragraphs = NodeUtil.splitNodes(pageNode.children, splitParagraphsRegex)

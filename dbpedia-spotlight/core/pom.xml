@@ -45,8 +45,8 @@
         </dependency>
 
         <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
         </dependency>
 
         <dependency>
@@ -76,19 +76,8 @@
         </dependency>
 
         <dependency>
-            <groupId>jcs</groupId>
-            <artifactId>jcs</artifactId>
-            <exclusions>
-                <exclusion>
-                    <groupId>xerces</groupId>
-                    <artifactId>xerces</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <dependency>
-            <groupId>xerces</groupId>
-            <artifactId>xercesImpl</artifactId>
+            <groupId>commons-logging</groupId>
+            <artifactId>commons-logging</artifactId>
         </dependency>
 
         <dependency>
@@ -102,16 +91,6 @@
         </dependency>
 
         <dependency>
-            <groupId>nekohtml</groupId>
-            <artifactId>nekohtml</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.semanticweb.yars</groupId>
             <artifactId>nxparser-parsers</artifactId>
         </dependency>
@@ -122,107 +101,18 @@
         </dependency>
 
         <dependency>
-            <groupId>edu.umd</groupId>
-            <artifactId>cloud9</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>weka</groupId>
-            <artifactId>kea-goss-weka</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>weka</groupId>
-            <artifactId>weka</artifactId>
-        </dependency>
-
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>net.sf.opencsv</groupId>
-            <artifactId>opencsv</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>hsqldb</groupId>
-            <artifactId>hsqldb</artifactId>
-        </dependency>
-
-        <!-- this dependency can be removed when experiments with mongodb are
-             indeed finished-->
-        <!--dependency>
-            <groupId>com.mongodb</groupId>
-            <artifactId>mongo</artifactId>
-            <version>1.0</version>
-        </dependency-->
-
-        <dependency>
-            <groupId>it.unimi.dsi</groupId>
-            <artifactId>fastutil</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>opennlp</groupId>
-            <artifactId>maxent</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.opennlp</groupId>
-            <artifactId>opennlp-tools</artifactId>
-        </dependency>
-
-        <!--dependency>
-            <groupId>opennlp</groupId>
-            <artifactId>tools</artifactId>
-            <version>1.5.0</version>
-        </dependency-->
-
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.esotericsoftware.kryo</groupId>
-            <artifactId>kryo</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>trove</groupId>
-            <artifactId>trove</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.mahout</groupId>
-            <artifactId>mahout-collections</artifactId>
-        </dependency>
-
-        <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-math</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>scala.ahocorasick</groupId>
-            <artifactId>spotter-aho</artifactId>
-        </dependency>
 
         <dependency>
-            <groupId>org.scalaz</groupId>
-            <artifactId>scalaz-core_${scala.compiler.version.minor}</artifactId>
+            <groupId>org.apache.jcs</groupId>
+            <artifactId>jcs</artifactId>
         </dependency>
 
 
-        <dependency>
-            <groupId>com.typesafe.akka</groupId>
-            <artifactId>akka-actor</artifactId>
-        </dependency>
 
-
-    </dependencies>
+</dependencies>
 
 </project>

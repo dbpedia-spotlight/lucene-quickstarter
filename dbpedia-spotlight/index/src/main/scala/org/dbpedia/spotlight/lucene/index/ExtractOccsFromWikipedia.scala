@@ -21,11 +21,10 @@ package org.dbpedia.spotlight.lucene.index
 import java.io.File
 import org.dbpedia.spotlight.log.SpotlightLog
 import org.dbpedia.spotlight.string.ContextExtractor
-import org.dbpedia.spotlight.util.IndexingConfiguration
+import org.dbpedia.spotlight.util.{FileUtils, IndexingConfiguration}
 import org.dbpedia.spotlight.filter.occurrences.{RedirectResolveFilter, UriWhitelistFilter, ContextNarrowFilter}
 import org.dbpedia.spotlight.io._
 import org.dbpedia.spotlight.model.DBpediaResourceOccurrence
-import org.dbpedia.spotlight.BzipUtils
 import org.dbpedia.extraction.util.Language
 
 import scala.io.Source
@@ -61,13 +60,12 @@ object ExtractOccsFromWikipedia {
         val language = config.getLanguage().toLowerCase
         //Bad URIs -- will exclude any URIs that match these patterns. Used for Lists, disambiguations, etc.
         val blacklistedURIPatternsFileName = config.get("org.dbpedia.spotlight.data.badURIs."+language)
-        blacklistedURIPatterns = Source.fromFile(blacklistedURIPatternsFileName).getLines.map( u => u.r ).toSet
+        blacklistedURIPatterns = Source.fromFile(blacklistedURIPatternsFileName, FileUtils.FORMAT).getLines.map( u => u.r ).toSet
 
 
         if (wikiDumpFileName.endsWith(".bz2")) {
-            SpotlightLog.warn(this.getClass, "The DBpedia Extraction Framework does not support parsing from bz2 files. You can stop here, decompress and restart the process with an uncompressed XML.")
-            SpotlightLog.warn(this.getClass, "If you do not stop the process, we will decompress the file into the /tmp/ directory for you.")
-            wikiDumpFileName = BzipUtils.extract(wikiDumpFileName)
+            SpotlightLog.error(this.getClass, "The DBpedia Extraction Framework does not support parsing from bz2 files. You must decompress and restart the process with an uncompressed XML.")
+            System.exit(0);
         }
 
         val conceptUriFilter = UriWhitelistFilter.fromFile(new File(conceptURIsFileName))
