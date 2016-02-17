@@ -36,8 +36,7 @@ object AddTypesToIndex {
           case true  => TypesLoader.getTypesMapFromTSV_java(input)
           case false => TypesLoader.getTypesMap_java(input)
         }
-        input.close()
-        typesMap
+        input.closetypesMap
     }
 
     def main(args : Array[String]) {

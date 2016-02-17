@@ -16,10 +16,12 @@
 
 package org.dbpedia.spotlight.util
 
+import java.net.URLDecoder
+
 import io.Source
 import scala.collection.JavaConversions._
 import org.dbpedia.spotlight.log.SpotlightLog
-import java.util.{LinkedHashSet, LinkedList}
+import java.util.LinkedHashSet
 import java.io.{InputStream, File}
 import org.semanticweb.yars.nx.parser.NxParser
 import collection.JavaConversions
@@ -87,8 +89,8 @@ object TypesLoader
             val triple = parser.next
             if(!triple(2).toString.endsWith("owl#Thing")) {
                 i = i + 1;
-                val resource = new DBpediaResource(triple(0).toString)
-                val t = Factory.OntologyType.fromURI(triple(2).toString)
+                val resource = new DBpediaResource(URLDecoder.decode(triple(0).getLabel, FileUtils.FORMAT))
+                val t = Factory.OntologyType.fromURI(triple(2).getLabel)
                 val typesList : java.util.LinkedHashSet[OntologyType] = typesMap.get(resource.uri).getOrElse(new LinkedHashSet[OntologyType]())
                 typesList.add(t)
                 typesMap = typesMap.updated(resource.uri, typesList)
