@@ -11,7 +11,5 @@ do
 ./run_index.sh ${DBPEDIA_VERSION} ${lang}
 ./package.sh ${DBPEDIA_VERSION} ${lang}
 ./publish_sf.sh ${DBPEDIA_VERSION} ${lang} &
-rm /mnt/dbpedia_data -r
-rm /mnt/wikipedia -r
 done
 
