@@ -1,7 +1,7 @@
 #!/bin/bash
 
 readonly DBPEDIA_VERSION=$1
-readonly all_languages=(es fr it nl pl pt ru de en ca el)
+readonly all_languages=(es fr it nl pl pt ru de ca el en)
 
 for lang in ${all_languages[@]}
 do
