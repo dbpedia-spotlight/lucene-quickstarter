@@ -8,7 +8,7 @@ do
 ./download_dbpedia.sh ${DBPEDIA_VERSION} ${lang}
 ./download_wikipedia.sh ${lang}
 ./index_all.sh ${DBPEDIA_VERSION}
-./run_index.sh ${DBPEDIA_VERSION} ${lang}
+./build_index.sh ${DBPEDIA_VERSION} ${lang}
 ./package.sh ${DBPEDIA_VERSION} ${lang}
 ./publish_sf.sh ${DBPEDIA_VERSION} ${lang} &
 done
