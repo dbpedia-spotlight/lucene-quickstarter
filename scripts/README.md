@@ -1,83 +1,84 @@
 
 ## Scripts
-===================
+-----------
 
-* download_dbpedia.sh;
+####  download_dbpedia.sh;
 
 Script that download all DBpedia files that Spotlight uses for build a index by language and version
 
-Usage: 
+###### Usage: 
 
 download_dbpedia.sh <version> <language code>
 
-Eg:
+###### Eg:
 
 `./download_dbpedia.sh 3.9 en`
 
-* download_wikipedia.sh;
+#### download_wikipedia.sh;
 
 Script that download the latest Wikipedia dump
 
-Usage:
+###### Usage:
 
 download_dbpedia.sh <language code>
 
-Eg:
+###### Eg:
 
 `./download_dbpedia.sh en`
 
 
-* index_config_file.sh;
+#### index_config_file.sh;
 
 Script that build properties file used by DBpedia Spotlight Lucene extractor
 
-Usage:
+###### Usage:
 
 index_config_file.sh 3.9 <language code> <language name>  <lucene analyzer class>
 
+###### Eg:
 `./index_config_file.sh 3.9 en english org.apache.lucene.analysis.en.EnglishAnalyzer`
 
 
-* index_server_file;
+#### index_server_file;
 
 Script that build properties file used by DBpedia Spotlight Server
 
-Usage:
+###### Usage:
 index_server_file.sh 3.9 <language code> <language name>  <lucene analyzer class>
 
-Eg:
+###### Eg:
 `./index_server_file.sh 3.9 en english org.apache.lucene.analysis.en.EnglishAnalyzer`
 
-* package;
+#### package;
 
 Script that build a pack index and configuration files.
 
-Usage:
+###### Usage:
 package 3.9 <language code>
 
-Eg:
+###### Eg:
 `./package.sh 3.9 en `
 
 
-* publish_sf;
+#### publish_sf;
 
 Script that publish the package file on Source Forge
 
-Usage:
+###### Usage:
 publish_sf 3.9 <language code>
 
-Eg:
+###### Eg:
 `./publish_sf 3.9 en`
 
 
-* build_index
+#### build_index
 
 Script that performs index building operation
 
-Usage:
+###### Usage:
 build_index <version> <language code>
 
-Eg:
+###### Eg:
 `./build_index 3.9 en `
 
 
