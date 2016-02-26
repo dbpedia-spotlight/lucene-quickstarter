@@ -415,7 +415,7 @@ object ExtractCandidateMap
 
         //Bad URIs -- will exclude any URIs that match these patterns. Used for Lists, disambiguations, etc.
         val blacklistedURIPatternsFileName = config.get("org.dbpedia.spotlight.data.badURIs."+language)
-        blacklistedURIPatterns = Source.fromFile(blacklistedURIPatternsFileName).getLines.map( u => u.r ).toSet
+        blacklistedURIPatterns = Source.fromFile(blacklistedURIPatternsFileName, FileUtils.FORMAT).getLines.map( u => u.r ).toSet
 
         //Stopwords (bad surface forms)
         val stopWordsFileName = config.get("org.dbpedia.spotlight.data.stopWords."+language)
