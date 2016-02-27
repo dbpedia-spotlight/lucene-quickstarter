@@ -10,6 +10,6 @@ do
 ./index_all.sh ${DBPEDIA_VERSION}
 ./build_index.sh ${DBPEDIA_VERSION} ${lang}
 ./package.sh ${DBPEDIA_VERSION} ${lang}
-./publish_sf.sh ${DBPEDIA_VERSION} ${lang} &
+##./publish_sf.sh ${DBPEDIA_VERSION} ${lang} &
 done
 
