@@ -1,9 +1,3 @@
-# DISCLAIMER
-
-This repo is in a Beta stage. I don't recommend you use until we promote it for the DBpedia Spotlight organization. 
-Thank you for your patience!
-
-
 Quickstarter for DBpedia Spotlight Lucene
 ===================
 
