@@ -1,7 +1,7 @@
 #!/bin/bash
 
 readonly DBPEDIA_VERSION=$1
-readonly all_languages=(es fr it nl pl pt ru de ca el en)
+readonly all_languages=(es  it nl pl pt ru ca el fr de en)
 
 for lang in ${all_languages[@]}
 do
@@ -10,6 +10,6 @@ do
 ./index_all.sh ${DBPEDIA_VERSION}
 ./build_index.sh ${DBPEDIA_VERSION} ${lang}
 ./package.sh ${DBPEDIA_VERSION} ${lang}
-##./publish_sf.sh ${DBPEDIA_VERSION} ${lang} &
+./publish_sf.sh ${DBPEDIA_VERSION} ${lang} &
 done
 
