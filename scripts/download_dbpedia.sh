@@ -13,7 +13,7 @@ readonly ALL_FILES=(labels disambiguations redirects short_abstracts instance_ty
 # DBpedia with i18n (after 2015) 
 readonly SUPPORTED_VERSIONS_AFTER_2015="2015-04, 2015-10, 2016-04"
 readonly DBPEDIA_DOWNLOADS_2015="http://downloads.dbpedia.org"/$DBPEDIA_VERSION/core-i18n
-readonly ALL_FILES_2015=(labels disambiguations redirects short-abstracts instance-types article-categories)
+readonly ALL_FILES_2015=(labels disambiguations redirects short_abstracts instance_types article_categories)
 
 #+------------------------------------------------------------------------------------------------------------------------------+
 #| Functions                                                                                                                    |
