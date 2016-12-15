@@ -20,11 +20,11 @@ Script that download the latest Wikipedia dump
 
 ###### Usage:
 
-download_dbpedia.sh <language code>
+download_wikipedia.sh <language code>
 
 ###### Eg:
 
-`./download_dbpedia.sh en`
+`./download_wikipedia.sh en`
 
 
 #### index_config_file.sh;
