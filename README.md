@@ -1,6 +1,8 @@
 Quickstarter for DBpedia Spotlight Lucene
 ===================
 
+[![Join the chat at https://gitter.im/dbpedia-spotlight/lucene-quickstarter](https://badges.gitter.im/dbpedia-spotlight/lucene-quickstarter.svg)](https://gitter.im/dbpedia-spotlight/lucene-quickstarter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 You can use this repository for creating lucene backend index of DBpedia Spotlight in your language.
 
 The repo is ready to use for the follow languages: catalan, german , greek , english, spanish, french , italian, dutch, polish, portuguese, hungarian and russian.
