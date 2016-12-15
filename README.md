@@ -1,5 +1,3 @@
-[![Gitter](https://badges.gitter.im/dbpedia-spotlight/lucene-quickstarter.svg)](https://gitter.im/dbpedia-spotlight/lucene-quickstarter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-
 Quickstarter for DBpedia Spotlight Lucene
 ===================
 
