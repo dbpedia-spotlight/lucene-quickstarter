@@ -78,6 +78,16 @@ function unpackAll()
 	
 }
 
+
+function unpackAll2015()
+{
+	for i in ${ALL_FILES[@]}
+	do
+	  bunzip2 -fk $DBPEDIA_DATA/$LANG_i18n/${i}_$LANG_i18n.ttl.bz2 >  $DBPEDIA_DATA/$LANG_i18n/${i}_$LANG_i18n.nt
+	done
+
+}
+
 #-----------------------------------------------------------------------------------------------------------------------------+
 create_dir $DBPEDIA_DATA
 
@@ -102,7 +112,7 @@ if [[ $SUPPORTED_VERSIONS_AFTER_2015 == *"$DBPEDIA_VERSION"* ]]; then
 	 mv $DBPEDIA_DATA/$LANG_i18n/${i}_$LANG_i18n.ttl.bz2  $DBPEDIA_DATA/$LANG_i18n/${i/-/_}_$LANG_i18n.ttl.bz2  
 	done
 	
-    unpackAll
+    unpackAll2015
 fi
 
 

@@ -16,10 +16,10 @@ echo "">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "# DBpedia Datasets">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "# ----------------">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
-echo "org.dbpedia.spotlight.data.labels=${ROOT_DIRECTORY}/dbpedia_data/${DBPEDIA_VERSION}/${LANG_i18n}/labels_${LANG_i18n}.nt.bz2">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
-echo "org.dbpedia.spotlight.data.redirects=${ROOT_DIRECTORY}/dbpedia_data/${DBPEDIA_VERSION}/${LANG_i18n}/redirects_${LANG_i18n}.nt.bz2">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
-echo "org.dbpedia.spotlight.data.disambiguations=${ROOT_DIRECTORY}/dbpedia_data/${DBPEDIA_VERSION}/${LANG_i18n}/disambiguations_${LANG_i18n}.nt.bz2">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
-echo "org.dbpedia.spotlight.data.instanceTypes=${ROOT_DIRECTORY}/dbpedia_data/${DBPEDIA_VERSION}/${LANG_i18n}/instance_types_${LANG_i18n}.nt.bz2">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
+echo "org.dbpedia.spotlight.data.labels=${ROOT_DIRECTORY}/dbpedia_data/${DBPEDIA_VERSION}/${LANG_i18n}/labels_${LANG_i18n}.nt">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
+echo "org.dbpedia.spotlight.data.redirects=${ROOT_DIRECTORY}/dbpedia_data/${DBPEDIA_VERSION}/${LANG_i18n}/redirects_${LANG_i18n}.nt">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
+echo "org.dbpedia.spotlight.data.disambiguations=${ROOT_DIRECTORY}/dbpedia_data/${DBPEDIA_VERSION}/${LANG_i18n}/disambiguations_${LANG_i18n}.nt">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
+echo "org.dbpedia.spotlight.data.instanceTypes=${ROOT_DIRECTORY}/dbpedia_data/${DBPEDIA_VERSION}/${LANG_i18n}/instance_types_${LANG_i18n}.nt">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "# Files created from DBpedia Datasets">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "# -----------------------">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties

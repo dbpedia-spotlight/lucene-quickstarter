@@ -49,10 +49,20 @@ If you are here, seems that you have a new index ready for use. If not, tell us 
 
 ## Supported Extraction Framework versions
 
-* 3.9  - stable
+* 2016-04
 
-* 4.0, 4.1 - working in progress
-* 
+* 2015-10
+
+* 2015-04
+
+* 2015-04
+
+* 3.9
+
+* 3.8
+
+* 3.7
+
 
 ## Supported Docker versions
 This image is officially supported on Docker version 1.9.1.
