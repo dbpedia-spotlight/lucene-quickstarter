@@ -89,7 +89,7 @@ object ExtractCandidateMap
         badURIStream.close
 
         SpotlightLog.info(this.getClass, "  collecting concept URIs from titles in %s, without redirects and disambiguations...", titlesFileName)
-        val titlesInputStream = new BZip2CompressorInputStream(new FileInputStream(titlesFileName), true)
+        val titlesInputStream = new FileInputStream(titlesFileName)
         // get titles without bad URIs
         val parser = new NxParser().parse(titlesInputStream)
         while (parser.hasNext) {
@@ -219,7 +219,7 @@ object ExtractCandidateMap
 
         SpotlightLog.info(this.getClass, "  storing titles of redirect and disambiguation URIs...")
         for (fileName <- List(redirectsFileName, disambiguationsFileName)) {
-            val input = new BZip2CompressorInputStream(new FileInputStream(fileName), true)
+            val input = new FileInputStream(fileName)
             val parser = new NxParser().parse(input)
             while (parser.hasNext) {
                 val triple = parser.next
