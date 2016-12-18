@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 VERSION=$1
 LANGUAGE=$2
@@ -20,7 +21,7 @@ cd $SPOTLIGHT_INDEX
 echo ${INDEX_CONFIG_FILE} 
 
 # first step is to extract valid URIs, synonyms and surface forms from DBpedia#
-mvn scala:run -Dlauncher=ExtractCandidateMap "-DjavaOpts.Xmx=$JAVA_XMX" "-DaddArgs=${INDEX_CONFIG_FILE}"
+mvn scala:run -Dlauncher=ExtractCandidateMap "-DjavaOpts.Xmx=$JAVA_XMX -DtotalEntitySizeLimit=0 -Djdk.xml.totalEntitySizeLimit=0" "-DaddArgs=${INDEX_CONFIG_FILE}"
 
 # now we collect parts of Wikipedia dump where DBpedia resources occur and output those occurrences as Tab-Separated-Values
 echo -e "Parsing Wikipedia dump to extract occurrences...\n"

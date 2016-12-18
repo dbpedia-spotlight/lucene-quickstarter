@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 readonly DBPEDIA_VERSION=$1
 ./index_config_file.sh ${DBPEDIA_VERSION} ar arabic org.apache.lucene.analysis.ar.ArabicAnalyzer
 ./index_config_file.sh ${DBPEDIA_VERSION} ca catalan org.apache.lucene.analysis.ca.CatalanAnalyzer

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -e
 readonly LANG_i18n=$1
 readonly WIKIMEDIA_DOWNLOADS="http://dumps.wikimedia.org/"
 readonly WIKIPEDIA_DATA=/mnt/dbpedia/wikipedia

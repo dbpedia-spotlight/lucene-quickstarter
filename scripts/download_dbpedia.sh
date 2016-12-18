@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -e
 readonly DBPEDIA_VERSION=$1
 readonly LANG_i18n=$2
 readonly DBPEDIA_ROOT=/mnt/dbpedia

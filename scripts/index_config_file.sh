@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 readonly ROOT_DIRECTORY=/mnt/dbpedia
 readonly DBPEDIA_VERSION=$1
 readonly LANG_i18n=$2
