@@ -30,7 +30,6 @@ import java.util.Scanner
 import org.semanticweb.yars.nx.parser.NxParser
 import org.semanticweb.yars.nx.{BNode, Node, Literal, Resource}
 import collection.JavaConversions._
-import org.apache.commons.compress.compressors.bzip2.BZip2CompressorInputStream
 import org.dbpedia.extraction.util.WikiUtil
 
 import scala.util.matching.Regex
@@ -77,7 +76,7 @@ object ExtractCandidateMap
         SpotlightLog.info(this.getClass, "  collecting bad URIs from redirects in %s and disambiguations in %s ...", redirectsFileName, disambiguationsFileName)
         // redirects and disambiguations are bad URIs
         for (fileName <- List(redirectsFileName, disambiguationsFileName)) {
-            val input = new BZip2CompressorInputStream(new FileInputStream(fileName),true)
+            val input = new FileInputStream(fileName)
             var triples = new NxParser().parse(input)
             while (triples.hasNext) {
                 val triple = triples.next()
@@ -136,7 +135,7 @@ object ExtractCandidateMap
 
         SpotlightLog.info(this.getClass, "  loading redirects from %s...", redirectsFileName)
         var linkMap = Map[String,String]()
-        val redirectsInput = new BZip2CompressorInputStream(new FileInputStream(redirectsFileName), true)
+        val redirectsInput = new FileInputStream(redirectsFileName)
 
         val parser = new NxParser().parse(redirectsInput)
         while (parser.hasNext) {
@@ -268,7 +267,7 @@ object ExtractCandidateMap
         // make reverse map of redirects and disambiguations
         var linkMap = Map[String,List[String]]()
         for (fileName <- List(redirectsFileName, disambiguationsFileName)) {
-            val input = new BZip2CompressorInputStream(new FileInputStream(fileName), true)
+            val input = new FileInputStream(fileName)
             val parser = new NxParser().parse(input)
             while (parser.hasNext) {
                 val triple = parser.next
