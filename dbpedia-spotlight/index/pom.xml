@@ -52,6 +52,8 @@
                             <mainClass>org.dbpedia.spotlight.util.ExtractCandidateMap</mainClass>
                             <jvmArgs>
                                 <jvmArg>-Xmx${javaOpts.Xmx}</jvmArg>
+                                <jvmArg>-DtotalEntitySizeLimit=2147480000</jvmArg>
+                                <jvmArg>-Djdk.xml.totalEntitySizeLimit=2147480000</jvmArg>
                             </jvmArgs>
                             <!--args>
                                 <arg>../conf/indexing-3.8.properties</arg>
