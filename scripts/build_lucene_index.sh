@@ -25,7 +25,7 @@ mvn scala:run -Dlauncher=ExtractCandidateMap "-DtotalEntitySizeLimit=0 -Djdk.xml
 
 # now we collect parts of Wikipedia dump where DBpedia resources occur and output those occurrences as Tab-Separated-Values
 echo -e "Parsing Wikipedia dump to extract occurrences...\n"
-mvn scala:run -Dlauncher=ExtractOccsFromWikipedia "-DjavaOpts.Xmx=$JAVA_XMX" "-DaddArgs=${INDEX_CONFIG_FILE}|${SPOTLIGHT_OUTPUT_FILES}occs.tsv"
+mvn scala:run -Dlauncher=ExtractOccsFromWikipedia "-DtotalEntitySizeLimit=0 -Djdk.xml.totalEntitySizeLimit=0 -DjavaOpts.Xmx=$JAVA_XMX" "-DaddArgs=${INDEX_CONFIG_FILE}|${SPOTLIGHT_OUTPUT_FILES}occs.tsv"
 
 # (recommended) sorting the occurrences by URI will speed up context merging during indexing
 echo -e "Sorting occurrences to speed up indexing...\n"
@@ -37,8 +37,7 @@ sort --temporary-directory=${ROOT_DIR_TEMP} ${SPOTLIGHT_OUTPUT_FILES}surfaceForm
 grep -Pv "      [123] " ${SPOTLIGHT_OUTPUT_FILES}surfaceForms-fromOccs.count | sed -r "s|\s+[0-9]+\s(.+)|\1|" > ${SPOTLIGHT_OUTPUT_FILES}surfaceForms-fromOccs-thresh3.tsv
 
 
-cp ${SPOTLIGHT_OUTPUT_FILES}surfaceForms.tsv ${SPOTLIGHT_OUTPUT_FILES}surfaceForms-fromTitRedDis.tsv
-cat ${SPOTLIGHT_OUTPUT_FILES}surfaceForms-fromTitRedDis.tsv ${SPOTLIGHT_OUTPUT_FILES}surfaceForms-fromOccs.tsv > ${SPOTLIGHT_OUTPUT_FILES}surfaceForms.tsv
+cat ${SPOTLIGHT_OUTPUT_FILES}surfaceForms*.tsv > ${SPOTLIGHT_OUTPUT_FILES}surfaceForms.tsv
 
 set -e
 # create a lucene index out of the occurrences

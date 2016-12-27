@@ -45,6 +45,8 @@ import scala.util.matching.Regex
  */
 object ExtractOccsFromWikipedia {
 
+    System.setProperty("jdk.xml.totalEntitySizeLimit", "0")
+
     def main(args : Array[String]) {
         val indexingConfigFileName = args(0)
         val targetFileName = args(1)

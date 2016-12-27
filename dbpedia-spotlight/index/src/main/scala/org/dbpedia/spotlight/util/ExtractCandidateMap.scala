@@ -48,6 +48,7 @@ import scala.util.matching.Regex
 object ExtractCandidateMap
 {
     var maximumSurfaceFormLength = 50
+    System.setProperty("jdk.xml.totalEntitySizeLimit", "0")
 
     // DBpedia input
     var titlesFileName          = ""

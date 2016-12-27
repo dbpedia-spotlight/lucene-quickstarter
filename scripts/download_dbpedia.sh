@@ -11,7 +11,7 @@ readonly DBPEDIA_DOWNLOADS="http://downloads.dbpedia.org"/$DBPEDIA_VERSION
 readonly ALL_FILES=(labels disambiguations redirects short_abstracts instance_types article_categories)
 
 # DBpedia with i18n (after 2015) 
-readonly SUPPORTED_VERSIONS_AFTER_2015="2015-04, 2015-10, 2016-04"
+readonly SUPPORTED_VERSIONS_AFTER_2015="2015-04, 2015-10, 2016-04, 2016-10"
 readonly DBPEDIA_DOWNLOADS_2015="http://downloads.dbpedia.org"/$DBPEDIA_VERSION/core-i18n
 readonly ALL_FILES_2015=(labels disambiguations redirects short_abstracts instance_types article_categories)
 
@@ -73,7 +73,7 @@ function unpackAll()
 {
 	for i in ${ALL_FILES[@]}
 	do
-	  bunzip2 -fk $DBPEDIA_DATA/$LANG_i18n/${i}_$LANG_i18n.nt.bz2 >  $DBPEDIA_DATA/$LANG_i18n/${i}_$LANG_i18n.nt
+	  bunzip2 -fk $DBPEDIA_DATA/$LANG_i18n/${i}_$LANG_i18n.nt.bz2 
 	done	
 	
 }
@@ -83,7 +83,7 @@ function unpackAll2015()
 {
 	for i in ${ALL_FILES[@]}
 	do
-	  bunzip2 -fk $DBPEDIA_DATA/$LANG_i18n/${i}_$LANG_i18n.ttl.bz2 >  $DBPEDIA_DATA/$LANG_i18n/${i}_$LANG_i18n.nt
+	  bunzip2 -fk $DBPEDIA_DATA/$LANG_i18n/${i}_$LANG_i18n.ttl.bz2 
 	done
 
 }

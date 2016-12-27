@@ -7,6 +7,9 @@ readonly LANG_i18n=$2
 readonly LANG_DESC=$3
 readonly LUCENE_CLASS=$4
 
+readonly SUPPORTED_VERSIONS_BEFORE_2015="3.0, 3.1, 3.2, 3.3, 3.4, 3.5, 3.5.1, 3.6, 3.7, 3.8, 3.9, 2014"
+readonly SUPPORTED_VERSIONS_AFTER_2015="2015-04, 2015-10, 2016-04, 2016-10"
+
 echo "# Wikipedia Dump" > ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "# --------------" >> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "org.dbpedia.spotlight.data.wikipediaDump=${ROOT_DIRECTORY}/wikipedia/${LANG_i18n}/${LANG_i18n}wiki-latest-pages-articles.xml">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
@@ -18,10 +21,19 @@ echo "">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "# DBpedia Datasets">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "# ----------------">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
+if [[ $SUPPORTED_VERSIONS_BEFORE_2015 == *"$DBPEDIA_VERSION"* ]]; then
 echo "org.dbpedia.spotlight.data.labels=${ROOT_DIRECTORY}/dbpedia_data/${DBPEDIA_VERSION}/${LANG_i18n}/labels_${LANG_i18n}.nt">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "org.dbpedia.spotlight.data.redirects=${ROOT_DIRECTORY}/dbpedia_data/${DBPEDIA_VERSION}/${LANG_i18n}/redirects_${LANG_i18n}.nt">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "org.dbpedia.spotlight.data.disambiguations=${ROOT_DIRECTORY}/dbpedia_data/${DBPEDIA_VERSION}/${LANG_i18n}/disambiguations_${LANG_i18n}.nt">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "org.dbpedia.spotlight.data.instanceTypes=${ROOT_DIRECTORY}/dbpedia_data/${DBPEDIA_VERSION}/${LANG_i18n}/instance_types_${LANG_i18n}.nt">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
+fi
+
+if [[ $SUPPORTED_VERSIONS_AFTER_2015 == *"$DBPEDIA_VERSION"* ]]; then
+echo "org.dbpedia.spotlight.data.labels=${ROOT_DIRECTORY}/dbpedia_data/${DBPEDIA_VERSION}/${LANG_i18n}/labels_${LANG_i18n}.ttl">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
+echo "org.dbpedia.spotlight.data.redirects=${ROOT_DIRECTORY}/dbpedia_data/${DBPEDIA_VERSION}/${LANG_i18n}/redirects_${LANG_i18n}.ttl">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
+echo "org.dbpedia.spotlight.data.disambiguations=${ROOT_DIRECTORY}/dbpedia_data/${DBPEDIA_VERSION}/${LANG_i18n}/disambiguations_${LANG_i18n}.ttl">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
+echo "org.dbpedia.spotlight.data.instanceTypes=${ROOT_DIRECTORY}/dbpedia_data/${DBPEDIA_VERSION}/${LANG_i18n}/instance_types_${LANG_i18n}.ttl">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
+fi
 echo "">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "# Files created from DBpedia Datasets">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "# -----------------------">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
