@@ -7,6 +7,14 @@ You can use this repository for creating lucene backend index of DBpedia Spotlig
 
 The repo is ready to use for the follow languages: catalan, german , greek , english, spanish, french , italian, dutch, polish, portuguese, hungarian and russian.
 
+## I don't want to build the index. Where I can get it ready to use?
+
+
+[HERE](https://www.dropbox.com/sh/q3vd67yr02w78mv/AAAc8K8_PkAAYO8a0scYsQ5Xa?dl=0) you can download it.
+
+Powered by ![Dropbox](http://www.dropbox.com/static/images/about/dropbox_logo_glyph_2015.svg | width=20% | height=20%)
+
+
 ## Why my language is not supported yet?
 
 We are working on i18n support and you can help us on it. You just need update or create the stop words list and a black listed URI pattern (a small regex for disambiguation pages) for your target language. You can follow a lot of examples at /i18n folder.
