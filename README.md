@@ -10,9 +10,7 @@ The repo is ready to use for the follow languages: catalan, german , greek , eng
 ## I don't want to build the index. Where I can get it ready to use?
 
 
-[HERE](https://www.dropbox.com/sh/q3vd67yr02w78mv/AAAc8K8_PkAAYO8a0scYsQ5Xa?dl=0) you can download it.
-
-![Dropbox](http://www.iconsdb.com/icons/download/blue/dropbox-24.png)
+![Dropbox](http://www.iconsdb.com/icons/download/blue/dropbox-24.png) [HERE](https://www.dropbox.com/sh/q3vd67yr02w78mv/AAAc8K8_PkAAYO8a0scYsQ5Xa?dl=0) you can download it.
 
 
 ## Why my language is not supported yet?
