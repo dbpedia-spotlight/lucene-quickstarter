@@ -12,7 +12,7 @@ The repo is ready to use for the follow languages: catalan, german , greek , eng
 
 [HERE](https://www.dropbox.com/sh/q3vd67yr02w78mv/AAAc8K8_PkAAYO8a0scYsQ5Xa?dl=0) you can download it.
 
-Powered by ![Dropbox](https://www.dropbox.com/static/images/about/dropbox_logo_glyph_2015.svg | width=20%)
+![Dropbox](http://www.iconsdb.com/icons/download/blue/dropbox-24.png)
 
 
 ## Why my language is not supported yet?
