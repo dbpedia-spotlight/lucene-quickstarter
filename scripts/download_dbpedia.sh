@@ -8,12 +8,12 @@ readonly DBPEDIA_DATA=$DBPEDIA_ROOT/dbpedia_data/$DBPEDIA_VERSION
 # DBpedia versions with i18n support (before 2015) 
 readonly SUPPORTED_VERSIONS_BEFORE_2015="3.0, 3.1, 3.2, 3.3, 3.4, 3.5, 3.5.1, 3.6, 3.7, 3.8, 3.9, 2014"
 readonly DBPEDIA_DOWNLOADS="http://downloads.dbpedia.org"/$DBPEDIA_VERSION
-readonly ALL_FILES=(labels disambiguations transitive_redirects short_abstracts instance_types article_categories)
+readonly ALL_FILES=(labels disambiguations redirects short_abstracts instance_types article_categories)
 
 # DBpedia with i18n (after 2015) 
 readonly SUPPORTED_VERSIONS_AFTER_2015="2015-04, 2015-10, 2016-04, 2016-10"
 readonly DBPEDIA_DOWNLOADS_2015="http://downloads.dbpedia.org"/$DBPEDIA_VERSION/core-i18n
-readonly ALL_FILES_2015=(labels disambiguations redirects short_abstracts instance_types article_categories)
+readonly ALL_FILES_2015=(labels disambiguations transitive_redirects short_abstracts instance_types article_categories)
 
 #+------------------------------------------------------------------------------------------------------------------------------+
 #| Functions                                                                                                                    |
