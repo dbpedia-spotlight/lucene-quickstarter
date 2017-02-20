@@ -81,7 +81,7 @@ function unpackAll()
 
 function unpackAll2015()
 {
-	for i in ${ALL_FILES[@]}
+	for i in ${ALL_FILES_2015[@]}
 	do
 	  bunzip2 -fk $DBPEDIA_DATA/$LANG_i18n/${i}_$LANG_i18n.ttl.bz2 
 	done
