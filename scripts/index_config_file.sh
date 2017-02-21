@@ -30,7 +30,7 @@ fi
 
 if [[ $SUPPORTED_VERSIONS_AFTER_2015 == *"$DBPEDIA_VERSION"* ]]; then
 echo "org.dbpedia.spotlight.data.labels=${ROOT_DIRECTORY}/dbpedia_data/${DBPEDIA_VERSION}/${LANG_i18n}/labels_${LANG_i18n}.ttl">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
-echo "org.dbpedia.spotlight.data.redirects=${ROOT_DIRECTORY}/dbpedia_data/${DBPEDIA_VERSION}/${LANG_i18n}/redirects_transitive_${LANG_i18n}.ttl">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
+echo "org.dbpedia.spotlight.data.redirects=${ROOT_DIRECTORY}/dbpedia_data/${DBPEDIA_VERSION}/${LANG_i18n}/transitive_redirects_${LANG_i18n}.ttl">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "org.dbpedia.spotlight.data.disambiguations=${ROOT_DIRECTORY}/dbpedia_data/${DBPEDIA_VERSION}/${LANG_i18n}/disambiguations_${LANG_i18n}.ttl">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 echo "org.dbpedia.spotlight.data.instanceTypes=${ROOT_DIRECTORY}/dbpedia_data/${DBPEDIA_VERSION}/${LANG_i18n}/instance_types_${LANG_i18n}.ttl">> ../i18n/${LANG_i18n}/indexing_${DBPEDIA_VERSION}.properties
 fi
