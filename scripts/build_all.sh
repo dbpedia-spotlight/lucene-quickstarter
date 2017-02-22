@@ -9,6 +9,5 @@ do
 ./download_wikipedia.sh ${lang}
 ./index_all.sh ${DBPEDIA_VERSION}
 ./build_lucene_index.sh ${DBPEDIA_VERSION} ${lang}
-./package.sh ${DBPEDIA_VERSION} ${lang}
 done
 
