@@ -91,7 +91,7 @@ Pablo N. Mendes, Max Jakob, Andrés García-Silva and Christian Bizer. [DBpedia 
 
 ## About
 
-This repo is an original work from  Pablo Mender ([@pablomendes](https://github.com/pablomendes)), Max Jakob ([@maxjakob](https://github.com/maxjakob)), Joachim Daiber ([@jodaiber](https://github.com/jodaiber)) and DBpedia Spotlight community.
+This repo is an original work from  Pablo Mendes ([@pablomendes](https://github.com/pablomendes)), Max Jakob ([@maxjakob](https://github.com/maxjakob)), Joachim Daiber ([@jodaiber](https://github.com/jodaiber)) and DBpedia Spotlight community.
 
 
 
