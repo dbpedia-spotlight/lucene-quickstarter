@@ -30,17 +30,18 @@ To create a new  index you will require
 ## How to run
 
  * docker run -it dbpediaspotlight/lucene-quickstarter bash
+ * cd /mnt/dbpedia/lucene-quickstarter/scripts
  * Download the latest dump of Wikipedia. You can use the command line
  
-  `./lucene-quickstarter/scripts/download_wikipedia.sh LANGUAGE_CODE`
+  `./download_wikipedia.sh LANGUAGE_CODE`
   
-   E.g: `./lucene-quickstarter/scripts/download_wikipedia.sh en`  for english
+   E.g: `./download_wikipedia.sh en`  for english
 
  * Download the DBpedia dumps, just typing 
  
- `./lucene-quickstarter/scripts/download_dbpedia.sh.sh VERSION LANGUAGE_CODE`
+ `./download_dbpedia.sh.sh VERSION LANGUAGE_CODE`
  
-   E.g: `./lucene-quickstarter/scripts/download_dbpedia.sh 3.9 en `for english
+   E.g: `./download_dbpedia.sh 3.9 en `for english
 
   Check if all files were successfully downloaded. From DBpedia, we must have all files (labels, disambiguations, redirects, short_abstracts, article_categories and instance_types). If some file is not available, ask for help in DBpedia mail list.
   
@@ -48,7 +49,7 @@ To create a new  index you will require
   
   * Run the indexer script
   
-  `.lucene-quickstarter/scripts/run_index.sh VERSION LANGUAGE_CODE`
+  `./run_index.sh VERSION LANGUAGE_CODE`
 
 
 If you want to generate the models outside the container, just map volumes for the folders /mnt/dbpedia/spotlight, /mnt/dbpedia/dbpedia_data and /mnt/dbpedia/wikipedia.
