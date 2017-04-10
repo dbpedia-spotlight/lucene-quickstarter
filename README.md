@@ -10,7 +10,7 @@ The repo is ready to use for the follow languages: catalan, german , greek , eng
 ## I don't want to build the index. Where I can get it ready to use?
 
 
-![Dropbox](http://www.iconsdb.com/icons/download/blue/dropbox-24.png) [HERE](https://www.dropbox.com/sh/q3vd67yr02w78mv/AAAc8K8_PkAAYO8a0scYsQ5Xa?dl=0) you can download it.
+![Dropbox](http://www.iconsdb.com/icons/download/blue/dropbox-24.png) [HERE](https://www.dropbox.com/sh/q3vd67yr02w78mv/AAAc8K8_PkAAYO8a0scYsQ5Xa?dl=0) you can download it or <http://downloads.dbpedia-spotlight.org>
 
 
 ## Why my language is not supported yet?
@@ -29,8 +29,7 @@ To create a new  index you will require
 
 ## How to run
 
- * Create or mount a new folder in /mnt called dbpedia. It is our workspace
- * Clone this repo locally inside /mnt/dbpedia;
+ * docker run -it dbpediaspotlight/lucene-quickstarter bash
  * Download the latest dump of Wikipedia. You can use the command line
  
   `./lucene-quickstarter/scripts/download_wikipedia.sh LANGUAGE_CODE`
@@ -51,7 +50,13 @@ To create a new  index you will require
   
   `.lucene-quickstarter/scripts/run_index.sh VERSION LANGUAGE_CODE`
 
-If you are here, seems that you have a new index ready for use. If not, tell us opening an issue.
+
+If you want to generate the models outside the container, just map volumes for the folders /mnt/dbpedia/spotlight, /mnt/dbpedia/dbpedia_data and /mnt/dbpedia/wikipedia.
+
+E.g:
+```
+ docker run -v /home/user/data/spotlight:/mnt/dbpedia/spotlight -v /home/user/data/dbpedia:/mnt/dbpedia/dbpedia_data -v /home/user/data/wikipedia:/mnt/dbpedia/wikipedia -it dbpediaspotlight/lucene-quickstarter bash
+```
 
 ## Supported Extraction Framework versions
 
