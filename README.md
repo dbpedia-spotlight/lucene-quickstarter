@@ -49,7 +49,7 @@ To create a new  index you will require
   
   * Run the indexer script
   
-  `./run_index.sh VERSION LANGUAGE_CODE`
+  `./build_lucene_index.sh VERSION LANGUAGE_CODE`
 
 
 If you want to generate the models outside the container, just map volumes for the folders /mnt/dbpedia/spotlight, /mnt/dbpedia/dbpedia_data and /mnt/dbpedia/wikipedia.
