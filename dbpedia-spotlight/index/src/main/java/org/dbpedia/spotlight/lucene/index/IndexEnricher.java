@@ -212,7 +212,7 @@ public class IndexEnricher extends BaseIndexer<Object> {
                 Document doc = searcher.getFullDocument(i);
                 String uri = doc.getField(LuceneManager.DBpediaResourceField.URI.toString()).stringValue();
 
-                LinkedHashSet<OntologyType> types = typesMap.get(namespace.concat(uri));
+                LinkedHashSet<OntologyType> types = typesMap.get(uri);
                 if (types != null) {
                     for (OntologyType t : types) {
                         int numberOfAdds = 1;
