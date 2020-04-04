@@ -1,4 +1,4 @@
-FROM java:7
+FROM openjdk:8u242-jdk-buster
 
 MAINTAINER  Sandro Athaide Coelho <sandroacoelho@gmail.com
 
